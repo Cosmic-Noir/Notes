@@ -1,0 +1,7 @@
+// C# Notes. Uses a main method to execute code like Java, also called "entry point" of code. 
+// Source: https://csharp-station.com/Tutorial/CSharp/Lesson01
+/* Data Types: 
+    1. Boolean - delcared with keywork "bool" - true or false value. 
+    2. Integral - whole numbers? + char types? Unclear.
+    3. Floating Point and Decimal types - ? usedd when requiring fractional representations? 
+    4. Strings. 

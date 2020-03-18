@@ -1,0 +1,130 @@
+Sources: 
+https://en.wikipedia.org/wiki/Object-oriented_programming
+https://docs.oracle.com/javase/tutorial/java/concepts/index.html
+
+Object-Oriented Programming: programming paradigmm based on the concpet of "ojbects". These objects usually contain 
+properites and values, or arrays, other objects, and methods. Methods being functions that can act on values 
+of the object. These are usually class-based, as in objects are instances of classes. 
+
+* Uses data abstraction, encapsulation, messaging, modularity, polymorphism, and inheritance. *Should define these. 
+
+    Common OOP languages: Java, C++, C#, Python, PHP, JavaScript, Ruby, Perl,
+    Object Pascal, objective-C, Dart, Swift, Scala, Common List, and smalltalk.
+
+    - Object - software bundle of related states and behaviors, properties/values and methods. These can be
+    either simple, with only a few properties, or complex, containing even other objects. 
+
+    - Class - blueprint from which other objects are created - defines classes that model properties and methods 
+    of object. Each class can have one superclass, and a superclass can have unlimited subclasses.
+
+    - Inheritance - mechanism of organization for objects and classes. Objects inherit properties and
+    methods from their superclasses.
+
+    - Interface - ? "contract between a class and the outside world.When a class implements an interface, 
+    it promises to provide the behavior published by that interface. This section defines a simple interface 
+    and explains the necessary changes for any class that implements it. ? Methods form the object'section
+    interface with the outside world. " That makes more sense with second part - a method is like the button
+    for the promised action. The button is the only thing you see on the outside, just like how you would
+    only see the method name called, not the internal functions or tv wiring. 
+
+    - Package - namespace for oranizing classes and interfaces. 
+
+    * - Data encapsulation - fundamental principle - hiding internal states and requiring all interaction to
+    to be done through the object's methods. This provides the following advantages: 
+
+         ?  * - Modularity - "The source code for an object can be written and maintained independently of the
+            source code for other objects. Once created, an object can be easily passed around inside the system."
+
+        - Information Hiding - by using only methods of the object, internal mechanisms are still hidden. 
+
+        - Code re-use - If an object was already created you can re-use the object. Even if by someone else in 
+        another program.
+
+        - Pluggability and Debugging ease: If an object is causing an issue, you can remove and replace it 
+        with another object. 
+
+        - API - Application Programming Interface - Java class library. The packages contain tasks 
+        for the most general-purpose programming. This allows programmers to focus on their applications rather
+        than the infustructure necessary to make it work. 
+            Complete package list: https://docs.oracle.com/javase/8/docs/api/index.html
+
+** 4 Major Principles of OOP: Encapsulation, Data Abstraction, Polymorphism, and Inheritence.
+Source: http://codebetter.com/raymondlewallen/2005/07/19/4-major-principles-of-object-oriented-programming/
+
+    Encapsulation - "hiding of data implementation by restricting access to accessors and mutators". 
+        - Accessor - method used to ask an object about itself, using get method which is an accessor method.   
+        - Mutators - public methods that change the state or values of an object, but still hiding how it's changed. 
+            These use set methods to mutate the value of properties. 
+        - Advantage - can make changes to classes without breaking other code using and calling the same class for info.
+
+    Abstraction - used to manage complexity, decompose complex systems into small components. "Implementation of an object 
+    that contains the same essential properties and actions we can find in the original object we are representing."
+        - “An abstraction denotes the essential characteristics of an object that distinguish it from all
+        other kinds of objects and thus provide crisply defined conceptual boundaries, relative to the 
+        perspective of the viewer.” — G. Booch, Object-Oriented Design With Applications, Benjamin/Cummings,
+        Menlo Park, California, 1991.
+
+    Inheritance - allows the inheritance of fucntinality such as properties or methods from another class. From superclass
+    to subclass. 
+        - Advantage - ability to extend or inherit components not seeing how a class was implemented. 
+
+    Polymorphism - "One name, many forms". So for instance, a superclass has a method, and that method's used
+    values can be changed in subclasses. For example a "default" late fee value in a superclass can be changed
+    in a subclass. Therefore you're using the same method, but slightly different depending on the context. 
+
+Software Architecture: the rules, heuristics, and patterns that determine:
+            - parsing the problem and system into small and discernable pieces. 
+            - techniques used to create interfaces between the smaller pieces.
+            - techniques used to manage structure and flow.
+            - Tecniques used to interface the system to enviornment. 
+            
+Source: https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep
+
+OOP - design philosophy. 
+Class - representation of a type of object. blueprint or plan that describes the details of the object. 
+    Composed of a name, attributes, and operations. 
+
+5 Principles when Designing a Class: 
+    1. SRP - Single Responsibility Principle - A class should have one, and only one, reason to change.
+    2. OCP - The OPen Closed Principle - Should be able to extend any classes' behaviors without
+    modifying the classes.
+    3. LSP - The Liskov Substitution Principle - Derived classes must be substitutable for their base classes. 
+    4. DIP - The Dependency Inversion Principle - Depend on abstractions, not on concretions.
+    5. ISp - The Interface Segregation Principle - Make fine grained interfaces that are client specific. 
+
+Four main "gods" of OOP:
+    1. Encapsulation - "hide how a class does its business, while allowing other classes to make requests of it".
+    2. Abstraction - places emphasis on what an object is or does - hides irrelevant data. Primary means of cocntrolling
+    complextity in large programs. 
+    3. Inheritance - The ability of a new class to be created from an existing class by extending it. This principle
+    is used in that subclasses are specilizations of the parent/super class - inhertiting and altering or adding to the 
+    methods and properties of the class. 
+    4. Polymorphism - Ability to request that the same operations be performed by a wide range of different types of things.
+    This is implemented with the following techniques:
+        a. Method Overloading - ability to define several methods all with the same name. ?
+        b. Operator Overloading - (ad-hoc polymorphisms) some or all operators (like +, -, ==) are treated as polymorphic 
+        functioins and as such have different behaviors depending on the types of its arguments. 
+        c. Method overriding - Allows a subclass to override a specific implementation of a method that is already
+        provided by its super-class. 
+
+Classes Link to each other using: 
+    1. Association - this is a "has a" relationship between two classes where there is no particular ownership in place. 
+    2. Aggregation - a weak type of association with partial ownership. 
+    3. Composition - a strong type of association with full ownership. 
+
+Interface - increases security by hiding the implementation. 
+Abstract Class - 
+
+Good Inheritance example: 
+    "One of the most important relationships among objects in the real world is specialization, which can be described as 
+    the “is-a” relationship. When we say that a dog is a mammal, we mean that the dog is a specialized kind of mammal. 
+    It has all the characteristics of any mammal (it bears live young, nurses with milk, has hair), but it specializes these
+    characteristics to the familiar characteristics of canis domesticus. A cat is also a mammal. As such, we expect it to 
+    share certain characteristics with the dog that are generalized in Mammal, but to differ in those characteristics that 
+    are specialized in cats.
+
+    The specialization and generalization relationships are both reciprocal and hierarchical. Specialization is just the other side
+    of the generalization coin: Mammal generalizes what is common between dogs and cats, and dogs and cats specialize mammals to
+    their own specific subtypes."
+    
+Use Case - 

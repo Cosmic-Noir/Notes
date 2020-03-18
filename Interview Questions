@@ -1,0 +1,218 @@
+General:
+
+Tell me about yourself.
+Why are you interested in programming?
+What interests you in this role?
+Why do you want to work for this company?
+Tell me about one of your accomplishments.
+Tell me about a project you’ve done that you are proud of.
+Tell me about a challenge you overcame.
+Tell me about a time that you had a conflict with a colleague.
+What’s the most important thing you learned at Thinkful/Bloc?
+What unique qualities do you bring to this team?
+What’s your biggest weakness?
+What’s important to you when thinking about where you work?
+Where do you see yourself in five years?
+
+JavaScript: 
+    1. Explain scope vs closure.
+        - Refers to the global vs local scope of a variable, where a variable could have global scope if is declared outside of a code block and is therefore globally accessible by all functions. Vs a locally declared variable which provides closure, as it is not accessible elsewhere outside of the code block. -Answer: 
+    2. Explain syncronous vs asyncronous
+        - Syncronous is when code execution happens one line after the other, top to bottom, where the first function will execute and then the next function or line, but not until the previous function has run.
+
+        - Asyncronous functions are taken off the main thread, and run on their own thread at the same time when a promise is returned, a time has elapsed, or the function inside has executed. 
+        Must make sure that the code works becuase sometimes asyncronous code can execute at different times or in different orders. 
+
+        Extra notes: Javascript is a single-threaded language, being run as a single program, top to bottom. 
+
+    3. What's your favorite feature of ES6? 
+        - I really enjoy arrow functions and how they automatcially point to the "this" object within objects, automatically binding methods is pretty nice so you don't have to bind the function in the state. (right?)
+        
+    4. Restful API and Node? 
+        "Representational State Transfer" and is a software architectural style. REST is a set of constraints for how you should build and organize web APIs. Essentially for this style you must answer, "what are the endpoint addresses?", "what methods the endpoints support?", "what do query strings do?", "What is in the body and the response?", "how can you ensure performance and manage the complexity of the server?". 
+
+        The goal of a REST style architecture is to make the API simple, predictable, and consistent in design. API should be scalable to handle many components and interactions, being both efficient and performant.
+
+        Node is server side javascript that is highly scalable. If using javascript on the front end, code base in general will be more consitent. Large ecosystem of open-source libraries, making building APIs more streamlined. 
+
+    5. Explain JWT Auth
+        -   So when a user logs in, their credentials are sent to the server and authenticated. If the data is found to be valid, the server returns a JSON web token that is encoded. Contained in the JWT is header describing the algorithm and then the payload, contains returned encoded user data, and the signature, which is a server-side secret and can only be validated on the server side. Then authorization requires a valid JWT bearing the correct secret and credentials.
+
+    6. What do you like about React?
+        - The thing I like about React is also the thing I don't like about react. The compartmentilization of particular code blocks is what I love best, and for two reasons. One, it's so reusable! If you make flexible components that don't always require all the same information, you can re-use components in many places, like legos. Two, the use of compartmentalized units of code are what allow React to have it's virtual DOM with conditional rendering of specified components without a full re-render! I think this is really clever and helps hugely with performance. The only reason I dislike the the compartmentilization is I think it was hard for me at first to stay organized and seperate code into appropriatly small components. But the more I work in it, the easier it is to see how well-organized it is if you want it to be. 
+
+    7. What's the best way to build an SPA? (Single Page Application)
+        I am of the opinion that the best approach is to keep the backend and frontend code seperate, with the API keeping the data on the backend. Although it would require more upkeep of two seperate codebases and testing, BUT the data can now be used for any front-end app that needs it, and for a larger app, it is more maintainable and scalable as the projects grow.
+
+        alt - Monolith approach - back-end and front-end live in the same project. At first it's more maintainable and easier to get started, becuase it's not as complex and doesn't have to take time talking to a server. However, eventually the code becomes unmaintainable and the API is not accessible by outisde applications. 
+
+
+    Notes:
+        - SPA - A single page application is where only parts of the page are re-rendered to show the correct content. There will never be a second download request. Instead it is all downloaded and then controlled with javascript to change parts of the page by re-rendering certain parts of the DOM.
+            - Advantages:
+                - is that it's very fast. Never loading pages, only data from behind the scenes and allows you to display some loading displays while users wait. Highly reactive. 
+                - 'decoupled frontend'. Can focus on the front-end with using an API for data. 
+                - Think I heard that the browser can cache some of the html/css in memory, therefore making re-visited pages also faster too. 
+            - Disadvantages
+                 - SEO is challenging. 
+                 - Requires strickly JavaScript.
+                - Tends to favor modern browsers, not much supported in IE. 
+            
+
+       - MPA (Multi-page application) - when you click on something to see the details, the page re-renders and you can see the browser making additional requests to the server for the specific resources. Every new page is downloaded.
+            - Advantages: 
+                - SEO is simple, page already contains everything that the crawler sees, so it can see everything. Majority of webpages, frameworks, solutions, and best practices, are written for MPAs. Some things are easier to learn with MPA because of it's prevelance. 
+                - Tends to support more legacy browsers. 
+            - Disadvantages: 
+                - Slower pages, as they need to reload for every request. If server is slow, application is slow. 
+                - More coupled front and backend that is one big project. 
+    8. What's an advantage of graphQL and describe a use case.
+        - graphQL is a query lang that allows you to use a single endpoint. This reduces response time and avoid under and over fetching. I know that graphQL allows you to select the specific data you want returned.
+
+
+        - disadvantages:
+            -queries always return HTTP status of 200. The error will be located in the error message, but it makes it difficutl to monitor. 
+            - Lack of built-in caching support? 
+
+        Notes:
+            graphQL created by facebook in 2012, open-sourced 2015 as an alternative to REST APIs. 
+
+    9. What's the difference between SQL and graphQL?
+        -SQL returns all of an object, which leads to overfetching. Where graphQL returns only the data specified. 
+        -REST APIs have multiple endpoints and can use native HTTP caching to avoid refetching, but graphQL you must set up your own caching support and rely on libraries. 
+        -Complexity - if dealing with data is relatively the same and well organized, a REST API may be better, but for companies with quickly changing data and need to rearchitecture their API platforms, this may be more helpful.
+        
+    10. Describe the javaScript testing libraries you're familiar with.
+        - Mocha - operates on NodeJS. Can be used for frontend and backend. 
+        - Jest - Preferred for React-based apps. No configuration testing experience. Comes with snapshot testing and built in tool for code coverage. Compatibale with NodeJS, React, Anbular, VueJS. Maintained by Facebook. 
+        - Enzyme - Testing utility made for React. Can simulate events. 
+
+    11. How do you measure code quality? 
+        - Meausre these aspects:
+            1. Reliability: this measures probability that a system will run without failure for a certain time of operation. Can also measure MTBF (mean time between failures). Low defect counts are important for a reliable codebase.
+            2. Maintainability: Relies heavily on testability and understandability. Relates to size, consistency, structure, and complexity of codebase. 
+            3. Testability: Relies on how well one can control. observe, isolate, and automate testing. 
+            4. Portability: Relates to 'platform independency'. How well it does in different enviornemtns. 
+            5. Reusability: How well existing code can be used again. 
+
+        Notes: 
+            - Code quality is a subjective measurement of the health of the code and can be measured differently depending up on the context.
+            - Good code should:
+                - Do what is intended
+                - Follow consistent style
+                - Easy to understand
+                - Has been well-documented
+                - Can be tested
+
+    12. What's the advantage of open components? 
+            ?? Unsure if this is referring to openComponent framework or something else? 
+
+    13. When do you use a CDN?
+            - ?? Unclear. Maybe anytime you need a resource quickly that's scalable and can help divert traffic on the origin server? 
+
+            Notes: 
+                - A Content Delivery Network (CDN) is a network of servers with the same resources. When a user requests a resource via CDN, if finds the nearest (and therefore fastest) server called an "edge server". 
+                    - Advantages: 
+                        - Faster load times for web and mobile users
+                        - Quickly scalable during heavy traffic
+                        - Minimizes risk of traffic spikes at point of origin
+                        - Decreases infrastructure costs due to traffic offloading (less load on origin )
+                        - Better site performance. 
+
+    14. What is weblayer auth?
+        ?? Is this question referring to the python based weblayer.auth? Or something else? 
+
+HTML/CSS:
+    1. Explain float vs flexbox and the pros and cons of each.
+        - Float is nice when you simply want to remove and element from the flow, but not have it be ignored by the other inline-elements, such as text, which will now flow around the floated object. Flex-box is more complex, but allows much more control over where the ojbect is and how it's being displayed.Float used to be the most error prone, but was then replaced with flex-box and grid. Float does not provide even heights with differing content sizes of rows.
+
+        - Grid makes organizing data easy and flexible. You can specify columns and rows, and what content fills which rows and columns explicitly. Grid is a great tool to use for organizing web sites and applicaitons. 
+
+        - Flex-box is even easier and flexible. Gives very easy way to control every item in a row or column, where they are arranged or how they're centered, or even individual items. Flex is great for forms and nav bars. 
+
+
+    2. What are some 'gotchas' for writing efficient CSS?
+        1. Vertical Centering - Before CSS Grid and Flex-Box, it was much more difficult to correctly center elements in their parent containers. There just wasn't an elegant way to do it. One solution was making an element relatively positioned at 50% height of parent container, and then assigning a margin of -50% of itself. Or they used HTML tables with vertical-align (which only worked with HTML tables lol) Gross. 
+            a. Solution: Flex-Box allows you to use align-items and justify-content on the parent element to adjust the placement of child elements. 
+
+        2. 100% width doesn't always work - Does not work on inline elements or some table elements, OR if the parent's width isn't specified either. 
+            a. Solution: Make smaller and simpler websites with less applying of width: 100%; necessary. 
+
+        3. Float - Apparently CSS ignores the stated order of HTML elements when using properties float, clear, and display - ** Should look into this more **
+            a. Solution: Use something else, lol.
+
+        4. Margin-Collapes - Elements experience margin-collapse only vertically, meaning the true margin between top and bottom elements is equal to the max of which is larger. They do not stack. Where as horizontally, the margins do stack. AND this only happens when margins are actually touching vertically, not if they're seperated. 
+            a. Solution: One person recommended using margin-top only, avoiding the issue of margin-collapse altogether. 
+            
+        5. Z-index - Can be complicated if you don't know how it works. For example, it will only work on an element that is positioned, and is relative to its closes ancestor, making a "stacking context". 
+            a. Solution: Know how it works.
+        6.  Inheritance - only SOME of CSS properties are inherited. Some properties that are inherited are: font-family and color. Some that are not: margin and padding. 
+            a. Know explicitly which properties are passed to children elements and which are not.
+    3. Use cases of CSS grid?
+        General web layout, table data, displaying products and info, calender information. ? Unsure what else? 
+
+    4. How would you approach browser specific styling issues?
+        1. Avoid cross-browser compatibility issues by keeping code simple, validated, and with a view that not all fucntionality will work. You can also use a framework (like Bootstrap for css, or Angular and React for JavaScript) that handles much cross-browser compatibility work automatically. 
+        2. Reduce and reuse components, this not only simplifies the amount of styling necessary, but makes the code more maintainable when you do need to edit for cross-browser issues. 
+        3. Desgin a set of tests or scripts to run in each browser. 
+
+        Unsure about what else you could do.
+
+    5. What is SEO and how do you prioritize this?
+        SEO is Search Engine Optimization, and it's a measure of how well web crawlers can read your website and relate it's content to searching users. I think... 
+
+        1.  Improve your Nav - google and search engines search for a good UX and an easily navigable site is important and impacts your "bounce rate". Lyfe Marketing (https://www.lyfemarketing.com/blog/increase-search-engine-optimization/) suggests that no page is more than 3 clicks away. 
+
+        2. Remove Duplicate Content - Google actually penalizes sites with duplicate content and rewards those sites with unique content. 
+
+        3. Optimize sites for mobile - Google also penalizes sites not optimized for mobile devices because over 55% (Lyfe Marketing) of all searches are now on mobile devies. The number of mobiles users has now surpassed desktop users as of 2014. 
+
+        4. Site speed - Longer than 3 seconds to load and you're losing 50% of visitors (Akamai). You can improve this with: 
+            a. Image file size - compress image files to lower load times.
+            b. Browser caching - Storing resources locally on a users's computer makes the pages much faster. 
+            c. Script handling - Ensure code is well pruned- more code bogs down sites. 
+
+        5. Produce quality content - Produce unique, valuable content with quality content. Identify keywords the target audience will use. Use images to convey meaning and expression. 
+
+        7. Improve Metadata - Include title, description, and alt tags to describe more information on the site. 
+
+    6. Explain inline vs linking style sheets styling.
+        Inline styling is script directly in HTML, in the same line and inside the tag of the element it is styling. 
+
+        Style sheets reference specific elements, classes, or IDs, and then style those elemetns in another sheet that is linked to the html page in the Head element. 
+
+React:
+  Component Lifecycle and methods called in each phase
+    1. Mounting
+      a. constructor () - sets initial state
+      b. static getDerivedStateFromProps() - Users do not have access
+      c. render() - Return JSX, only mandatory method, cannot set state or will cause an infinite loop
+      * Note that componentWillMount() is depricated and should be avoided
+    2. Updating
+      a. static getDerivedStateFromProps() - 
+      b. shouldComponentUpdate() - compare state to see if there are updates?
+      c. render() - re-renders 
+      d. getSnapshotBeforeUpdate() - consider important user info before update, such as where the user was when scrolling
+      e. componentDidUpdate() - 
+    3. Unmounting  
+      a. componentWillUnmount() - 
+
+
+  Explain Error Boundaries - 
+    - Similar to a try/catch block - You can wrap your component in an error boundary component with two special react hooks:
+      - static getDerivedStateFromError - You can have a fallback component that can render if there was an error. 
+      - componentDidCatch - You can log the error if it is happening.
+    
+  Best lifecycle method for making API calls:
+    - componentDidMount() - allows initial loading of DOM, then can update state here which will cause re-render with new info. You can then use cool loading graphicas while API call is being made in the initial render. 
+
+
+
+General: 
+
+
+
+
+
+
+Problem List: 

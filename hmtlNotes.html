@@ -1,0 +1,701 @@
+<!-- html Notes-->
+
+<!--    Codecademy Basic Notes    -->
+
+<!--HTML defines the structure and presentation of raw text. It is declared to specify the HTML standard
+    being used in the content. The current standard is HTML5. Setting up an html document:-->
+
+<!DOCTYPE html> <!--document type declaration.-->
+
+<!-- <html></html> tag. This creates the actual structure and content of the document. Everything
+is placed in this tag if it to be interpreted as html. -->
+
+<!--The html is then divided up into <head></head>, <header></header>, <body></body>, and <footer></footer>
+tags. The <head> tag contains the metadata for the page that isn't actually displayed on the page. 
+The <head> tag contains the <title></title> tag which contains the title displayed on the open tab of 
+the browser. Ex:-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Coding Journal</title>
+  </head>
+  <header></header>
+  <body></body>
+  <footer></footer>
+</html>
+
+<!-- To Link a CSS stylesheet to your html document ex: -->
+
+<!doctype html>
+<html>
+<head>
+    ...
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+...
+</html>
+
+
+<!--Id Ex:-->
+
+<div id="intro">
+        <h1>Introduction</h1>
+      </div>
+
+<!-- <p> vs <span>: Paragraphs (<p>) contain a block of plain text. <span> contains short pieces of 
+text or other HTML. They are used to separate small pieces of content that are on the same line as 
+other content. It's best to use a <span> element when you want to target a specific piece of content 
+that is inline, or on the same line as other text. If you want to divide your content into blocks, 
+it's better to use a <div>.-->
+
+
+<!-- <em> emphasizes text, while <strong> boldens text. Ex:-->
+
+<p><strong>The Nile River</strong> is the <em>longest</em> river in the world,
+measuring over 6,850 kilometers long (approximately 4,260 miles).</p>
+
+
+<!-- <br> is used for line breaks. Ex:-->
+
+<p>The Nile River is the longest river <br> in the world, measuring over 6,850 <br> 
+kilometers long (approximately 4,260 <br> miles).</p>
+
+
+<!---      TABLES      -->
+
+<!-- <table></table> creates the table. Tables then require <tr></tr> which desigantes
+a row, but then requires <td></td> table data to actually put information into the table.
+ -->
+
+ <table>
+  <tr>
+  </tr>
+  <tr>
+    <td>Adam's Greenworks</td>
+    <td>14</td>
+    <td>Package Items</td>
+  </tr> 
+</table>
+
+<!-- Table Headings. <th></th> These are considered the title of etiher rows or columbs.
+In the example below, leaving the first <th></th> blank allows an empty corner for a column
+of titled rows. Hence, the second row's <th>Temperature</th> is considered the title
+for that row. The "scope" attribute can have one of two values, "row" or "col" which makes
+it clear what it should be heading. -->
+
+<table>
+    <tr>
+      <th></th>
+      <th scope="col">Saturday</th>
+      <th scope="col">Sunday</th>
+    </tr>
+    <tr>
+      <th scope="row">Temperature</th>
+      <td>73</td>
+      <td>81</td>
+    </tr>
+  </table>
+
+  <!-- Table Borders. Use CSS with the border attribute as shown below. Ex:-->
+
+<style>
+  table, td {
+    border: 1px solid black;
+  }
+</style>
+
+<!-- Spanning Columns. Use the colspan="2" attribute, but set to whatever integer represents
+the number of columns desired to be spanned. Ex:-->
+
+<table>
+    <tr>
+      <th>Monday</th>
+      <th>Tuesday</th>
+      <th>Wednesday</th>
+    </tr>
+    <tr>
+      <td colspan="2">Out of Town</td>
+      <td>Back in Town</td>
+    </tr>
+  </table>
+
+<!-- Spanning Rows. Use the rowspan="2" attribute. Ex:-->
+
+<table>
+    <tr> <!-- Row 1 -->
+      <th></th>
+      <th>Saturday</th>
+      <th>Sunday</th>
+    </tr>
+    <tr> <!-- Row 2 -->
+      <th>Morning</th>
+      <td rowspan="2">Work</td>
+      <td rowspan="3">Relax</td>
+    </tr>
+    <tr> <!-- Row 3 -->
+      <th>Afternoon</th>
+    </tr>
+    <tr> <!-- Row 4 -->
+      <th>Evening</th>
+      <td>Dinner</td>
+    </tr>
+  </table>
+
+
+<!-- Table Body. If a table becomes large, it may make sense to section off the 
+table body, containing all the data, while the head contains the headers. Ex:-->
+
+<table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Morning</th>
+        <td rowspan="2">Work</td>
+        <td rowspan="3">Relax</td>
+      </tr>
+      <tr>
+       <th>Afternoon</th>
+      </tr>
+      <tr>
+        <th>Evening</th>
+        <td>Dinner</td>
+      </tr>
+    </tbody>
+  </table>
+
+<!--Table Footer. The bottom could also be sectioned off as a footer section. This
+might be useful for totals. Ex:-->
+
+<table>
+    <thead>
+      <tr>
+        <th>Quarter</th>
+        <th>Revenue</th>
+        <th>Costs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Q1</th>
+        <td>$10M</td>
+        <td>$7.5M</td>
+      </tr>
+      <tr>
+        <th>Q2</th>
+        <td>$12M</td>
+        <td>$5M</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Total</th>
+        <td>$22M</td>
+        <td>$12.5M</td>
+      </tr>
+    </tfoot>
+  </table>
+
+<!-- Borders on table cells. You can also include borders around your table data
+that will look very nice for seperate data. Ex: -->
+
+<style>
+  td {
+    border: 1px solid black;
+  }
+</style>
+
+<!-- You can then increase the border-spacing of your table to increase the space between
+these boxes. Note that border-collapse on the table info must be set to seperate. The below
+example accepts 2 values, one for horizontal and vertical spacing.-->
+
+<style>
+  table {
+    border: 2px solid black;
+    border-collapse: separate;
+    border-spacing: 2px 4px; 
+  }
+</style>
+
+<!-- Showing empty cells. This can be set to show or hidden. Works well with bordered empty
+cells -->
+  <style>
+    table {
+     empty-cells: show; 
+    } 
+      </style>
+
+<!-- Caption property. You can include a caption on your table and then indicate in CSS 
+where the caption should be displayed. Values: Right, left, top, bottom. Where top is
+the default value. Ex:-->
+
+<table>
+  <caption>Your Information</caption>
+</table>
+
+<style>
+  table {
+    caption-side: bottom;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- To affect ALL elements, such as resetting margins and paddings in the ex:-->
+
+* {
+    margin: 0;
+    padding: 0;
+    }
+
+
+<!--    Buttons     -->
+
+<!-- <button> tag used to create HTML buttons. You can even put images or text
+inside of the button, which is what makes it different from the inpuit tag.
+Whatever text is between the tag will appear as the button text. -->
+
+<!-- In the below example, the onclick attribute is setting a location,
+note the single AND double quotes. -->
+
+<button onclick="location.href='recipes.html'" type="button">Click Me!</button>
+
+
+
+<!--    FORMS     -->
+
+<!--On forms: Made with <form></form>, this contains form elements. The most important being the
+<input></input> which depends upon the type, which is an attribute. You can also use types: email, 
+range, checkbox number, color, password, range, tel(telephone), url, or date, which will restrict 
+the input type. Ex:-->
+
+<!-- More on forms - you want to have the action and method attributes of "form" listed even 
+if javaScript is disabled. The "action" attribute is the URL of the server endpoint that the form data
+should be sent to. Method attribute is the request method. -->
+
+<form action="/some-server-endpoint" method="post">
+    <input type="text"> <!--Defines a one-line text imput field-->
+    <input type="radio"> <!--Defines a radio button (for selecting one of many choices).-->
+    <input type="submit"> <!--Defines a submit button (for submitting the form).-->
+</form>
+
+<!-- Radio types - if you want a group of options to only have one of the group be selected at the same time, then you must give each input in the group the same name. Ex: -->
+
+<input type="radio" name="gender" value="male"> Male<br>
+<input type="radio" name="gender" value="female"> Female<br>
+<input type="radio" name="gender" value="other"> Other
+
+
+<!-- Can you use "placeholder" attribute to set grey-scale "value" in input field 
+that disappears when you type in input-->
+
+<!--Ex of text input:-->
+
+<form>
+        First name:<br>
+        <input type="text" name="firstname"><br>
+        Last name:<br>
+        <input type="text" name="lastname">
+      </form>
+
+<!--Ex of radio button input:-->
+
+      <form>
+            <input type="radio" name="gender" value="male" checked> Male<br>
+            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="other"> Other
+          </form>
+
+<!-- To require a radio button to be selected, you can actually just have one already marked as "checked" Ex:-->
+
+<input type="radio" class="choice" name="choice" value="${QUESTIONS[questionIndex].answers[0]}" required checked>
+
+<!--The submit button passes data to a for-handler, which is typically a server page with script for
+processing the input data. The form-handler is specified in the form's action attribute. This tells
+the <form> tag where to send the form's information and what HTTP request to make. *Note that 
+you can use target="_blank" attribute to cause the new page to open another tab as well. Ex:  -->
+
+<form action="/action_page.php" target="_blank">
+    First name:<br>
+    <input type="text" name="firstname" value="Mickey"><br>
+    Last name:<br>
+    <input type="text" name="lastname" value="Mouse"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- The Method attribute. This specifies the HTTP method (GET or POST) to be used when submitting the form data. GET is the default method, however,
+the data submitted will be visible in the page address field. Never to be used with sensative data. POST should be used with any personal info
+and will not display the info in the address bar. This cannot be bookmarked like GET.-->
+
+<form action="/action_page.php" method="post"></form>
+
+<form action="/action_page.php" method="get"></form>
+
+<!-- Name fields. Each text type input must have a name attribute. If it is 
+missing, no input will be sent. The example below would only send
+the last name info:-->
+
+<form action="/action_page.php">
+    First name:<br>
+    <input type="text" value="Mickey"><br>
+    Last name:<br>
+    <input type="text" name="lastname" value="Mouse"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- <fieldset> This element is used to group related data in a form. <legend> defines a caption for the <fieldset> element. Ex:-->
+
+        <form action="/action_page.php">
+            <fieldset>
+              <legend>Personal information:</legend>
+              First name:<br>
+              <input type="text" name="firstname" value="Mickey"><br>
+              Last name:<br>
+              <input type="text" name="lastname" value="Mouse"><br><br>
+              <input type="submit" value="Submit">
+            </fieldset>
+          </form>
+
+<!-- Labels. Sometimes the text describing the field is set into the tag <label></label>.
+To associate a <label> and an <input> , the <input> needs an id attribute. We then
+assign the for attribute of the <label> element with the value of the id attribute of <input>:-->
+
+    <form action="/example.html" method="POST">
+        <label for="meal">What do you want to eat?</label>
+        <br>
+        <input type="text" name="food" id="meal">
+      </form>
+    
+<!-- Alternitvely, some prefer to wrap the input element in the label element and therefore 
+you should not include the for attribute, but this method may cause unexpected margin behavior: -->
+
+<label>Frist name
+  <input id="first-name" type="text">
+</label>
+
+<!-- Password Input. uses type="password". This will replace normal characters with *** or dots.
+ex: -->
+
+<form>
+    <label for="user-password">Password: </label>
+    <input type="password" id="user-password" name="user-password">
+  </form>
+
+<!-- Other on Forms. You can also add headers and other information as well. Ex:-->
+
+<form action="/example.html" method="POST">
+    <h1>Creating a form</h1>
+    <p>Looks like you want to learn how to create an HTML form. Well, the best way to learn is to play around with it.</p>
+  </form>
+
+<!-- Using the "range" type allows you to set a range dial with specific min, max, and "steps" Ex:-->
+
+<input id="doneness" name="doneness" type="range" min="0" max="5" step="0.5">
+
+<!-- Dropdown list ex:-->
+
+<form>
+    <label for="lunch">What's for lunch?</label>
+    <select id="lunch" name="lunch">
+      <option value="pizza">Pizza</option>
+      <option value="curry">Curry</option>
+      <option value="salad">Salad</option>
+      <option value="ramen">Ramen</option>
+      <option value="tacos">Tacos</option>
+    </select>
+  </form>
+
+<!-- <textarea> tag. Used for when there is more than one line of text that needs to be input.
+    You can use row and cols to extend how large it is. The value of textarea shows as the default
+    text in the area.:-->
+
+    <form>
+            <label for="blog">New Blog Post: </label>
+            <br>
+            <textarea id="blog" name="blog" rows="5" cols="30">
+                New Blog Post.
+            </textarea>
+          </form>
+
+<!-- Submit button. The attribute value="send" makes the button show send. The default is 
+just the submit. Ex:-->
+
+<form>
+        <input type="submit" value="Send">
+      </form>
+
+<!-- HMTL Form Validation. The concept of checking user provided data against the required data.
+We can require an input before submission by giving an input tag a "required attribute:-->
+
+<form action="/example.html" method="POST">
+    <label for="allergies">Do you have any dietary restrictions?</label>
+    <br>
+    <input id="allergies" name="allergies" type="text" required>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+
+<!-- To add a min length of characters for a text field, use the minlength attribute. 
+    You can do the same to set a max length as well. Ex:-->
+
+<form action="/example.html" method="POST">
+    <label for="summary">Summarize your fillings in less than 250 characters</label>
+    <input id="summary" name="summary" type="text" minlength="5" maxlength="250" required>
+    <input type="submit" value="Submit">
+  </form>
+
+
+
+
+<!--       BORDERS       -->
+
+<!--Rounded corners on borders. Done with border-radius: proerty 
+as shown below. In this example, the <style></style> tag is used
+to enclose in-document ***(term?) css sytling.-->
+
+<style>
+div {
+    background: hsla(240, 50%, 50%, 0.5);
+    border: 1px solid black;
+    border-radius: 25px;
+    margin: 50px 50px;
+    padding: 30px 30px;
+    text-align: right;
+    width: 350px;
+}
+</style>
+<!--        IMAGES      -->
+
+<!-- Note that the <img /> tag is a self closing tag, you can
+use or omit the forward slash, it will render the same.
+This tag uses the src attribute to set the image's source. 
+The uniform resource locator (URL).-->
+
+<img src="image-location.jpg" />
+
+<!-- Linking local images examples: -->
+
+<img src="picture.jpg">	<!--picture.jpg is located in the same folder as the current page-->
+<img src="images/picture.jpg"><!--picture.jpg is located in the images folder in the current folder-->
+<img src="/images/picture.jpg"><!--picture.jpg is located in the images folder at the root of the current web-->
+<img src="../picture.jpg">	<!--picture.jpg is located in the folder one level up from the current folder-->
+
+
+
+
+<!-- lt is the alternate tag or namefor when a picture cannot load. 
+This also plays a part in Search Engine Optimization (SEO).-->
+
+<img src="url.jpg" alt="Company Logo"/>
+
+<!-- Audio Controls gives people a control button. -->
+
+<audio src="audio./notes.mp3" controls type="audio/mp3">
+
+<!-- Video. Requires a src attribute to the source, and require
+an opening and closing tag. You can also set the width and height The 
+text between the tags is only displayed if the video fails to load. Ex:-->
+
+<video src="myVideo.mp4" width="320" height="240" controls>
+        Video not supported
+      </video>
+<!-- You can also put the source inside of the video tags:-->
+
+<video controls width="250">
+  <source src="/media/examples/flower.webm" type="video/webm">
+    Sorry, your browers doesn't support embedded videos. 
+</video>
+
+<!-- Muting the video: simply set muted="true", default is false which causes
+audio to play-->
+
+
+<!-- Seting the video to loop at the end: simply include "loop" as an attribute to cause it to loop-->
+
+<!--      LINKS           -->
+
+<!-- Anchors can have various states.
+link (default)
+visited - when link has been clicked before.
+hover - when mouse is positioned over the link.
+active - when mouse down.
+
+In the examples below, when a link is hovered over with the mouse cursor, the text will 
+be yellow and the background will change to black. In the second exmample, when the mouse
+is clicked on the link, the background will change to beige and the text to green. In the 
+third example, the link will now change to pink to show it was visited. In the
+last example, we have set the default links to have a color of orange. -->
+
+<style>
+a:hover {
+  color: yellow;
+  background: black;
+}
+
+a:active {
+  color: green;
+  background: beige;
+}
+a:visited {
+  color: pink;
+}
+a:link {
+  text-decoration: none;
+  color: orange;
+}
+
+</style>
+
+
+
+
+<!-- To make something a link, enclose in <a></a> anchor tags.
+In the case of enclosing another element, anchors on the outside,
+like below: -->
+
+<ul>
+        <a href="cakes.html"><li>Cakes</li></a>
+        <a href="pies.html"><li>Pies</li></a>
+        <a href="candy.html"><li>Candy</li></a>
+</ul>
+
+<!-- Linking to a relative page.Typically files are organized like so:
+    project-folder/
+    |—— about.html
+    |—— contact.html
+    |—— index.html
+
+The ./ in the following example tells the browser to look for the file in the
+current folder. Ex:-->
+
+<a href="./contact.html">Contact</a>
+
+<!-- Linking images. Ex:-->
+
+<a href="https://en.wikipedia.org/wiki/Opuntia" target="_blank"><img src="#" alt="A red prickly pear fruit"/></a>
+
+<!-- Linking to the same page. Ex:-->
+
+<p id="top">This is the top of the page!</p>
+<h1 id="bottom">This is the bottom! </h1>
+
+<!-- Using the href to the ID of "top" will cause it to bring the broswer
+to that spot on the page that has been IDed. Ex:-->
+
+<ol>
+    <li><a href="#top">Top</a></li>
+    <li><a href="#bottom">Bottom</a></li>
+</ol>
+
+
+
+
+
+
+<!--      LISTS UL/OL      -->
+
+<!-- <ul></ul> creats an unordered lists that uses bullets. 
+<ol></ol> creates a numbered list, with the default type="1". 
+You can use I for roman numberals, or i and a for lowercase. 
+Just be sure to use the <li></li> list item tag for the actual
+content of the lists.Ex:-->
+
+<ul>
+  <li>Limes</li>
+  <li>Tortillas</li>
+  <li>Chicken</li>
+</ul>
+
+<!--Note on <a></a> and <li></li>. If the anchor tag surrounds
+the list item, then then entire space of <li></li> will become 
+the anchor, including the empty spce. If the <li></li> contains the 
+anchor tag, then only the actual content text will be the link. Ex:-->
+
+<nav class="footer">
+        <ul>
+            <a href="www.google.com"><li>Home</li></a>
+            <a href="wwww.google.com"><li>About</li></a>
+            <a href="wwww.google.com"><li>Recipes</li></a>
+            <a href="wwww.google.com"><li>Contact Us</li></a>
+        </ul>
+    </nav>
+    <h3>&copy; 2020.</h3>
+</footer>
+
+<!-- To remove bullets from an <ul> Ex:-->
+
+    <style>
+        ul {
+            list-style-type: none;
+        }
+    </style>
+
+    <!-- list-style position. This changes whether or not the number/bullet is considered
+    inside or outside of the containing element. Set by:-->
+
+    <style>
+      table {
+        list-style-position: inside;
+      }
+    </style>
+
+<!-- Using form to login or direct to another page - Best method seems to be
+using action="profile.html" as an attribute of the form element itself: -->
+
+<form id="loginForm" action="profile.html" method="post">
+  <input type="text" name="userName" value="username"><br>
+  <input type="password" name="password" value="password"><br><br>
+  <button onclick="window.location.href = 'profile.html';">Login</button><br>
+</form>
+
+<!-- Web Storage - Used to store date on a user's local computer. Note * Never use
+Web Sotrage to save sensitive information. 
+ - Local Storage - No expiration and must be removed
+ - Session Storage - Deleted when window closes
+
+ Methods to get/set and remove data from local or session storage
+  - .getItem(key) - retrieve a saved value
+  - .setItem(key, value) - save a key-value pair
+  - .removeItem(key) - Deletes a key-value pair
+  - .clear() - removes all data for the domain
+
+-->
+
+
+
+<!-- Custom Data Attributes - Must be prefixed with 'data-' and not contain any uppercase letters. The Value can be any string. Ex: -->
+
+<ul id="vegetable-seeds">
+  <li data-spacing="10cm" data-sowing-time="March to June">Carrots</li>
+  <li data-spacing="30cm" data-sowing-time="February to March">Celery</li>
+  <li data-spacing="3cm" data-sowing-time="March to September">Radishes</li>
+</ul>
+
+
+<!-- E-mail links - use <a> tag with href set to the following example: -->
+
+
+    <a id="emailContent" href="mailto:?subject=VidVoid Pick List&body="><button id="js-emailList">Email List</button></a>

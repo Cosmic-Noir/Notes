@@ -1,0 +1,42 @@
+Hot Keys - Linux:
+
+Open Terminal - Ctrl+Alt+T
+Mouse shortcuts - 
+    -Double click will select a word. 
+    -Triple Click will select a whole line.
+    -Shift click at the end - selcts the whole thing. 
+
+Command Line - 
+    -Command+K - clears the terminal.
+    -$_ is a reference to a folder you just created.
+    -open fileName.html will actually open a file in the browser.   
+    -find locates things... Should try man find to look at commands.
+    code . will open VSCode.
+
+VScode - 
+    -Command+D - Mouse double click - select word - continuing to hit this keeps
+    selecting the same word in same document, then you can replace words.
+    -Command+L - Select whole line.
+    -Command+Shift+D - Duplicate whatever selected, line or block.
+    -Command+A - Select all
+
+    -Control+/ - To commemt in whatever document language. 
+    -!
+    -Alt+Z - toggle word wrapping.
+
+    Faster Syntax: 
+
+
+
+
+Browser - Chrome
+    -Ctrl+Shift+R - Refresh page.
+
+Slack 
+    -Command K - Lists anything that needs your attention
+    -Shift+Escp - Remove all notifications in channels. 
+    -Command+/ - Brings up slack shortcuts.
+
+
+Git Automation - 
+    gs -

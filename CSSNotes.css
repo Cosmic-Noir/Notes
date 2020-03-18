@@ -1,0 +1,1202 @@
+/* Coding for visually impared - Should always use best practices, as internet crawlers
+asses websites in the same way as some visually impared users browse the internet. 
+  Accessibility - 
+  Mouse user - 
+  Keyboard user - 
+  Lang attribute - 
+
+To tell screen readers what language the website is in, we need to assign the lang attribute 
+in the opening html tag. You can also set this attirbute on other elements, but it is most important
+on the root hmtl element. A screen reader will chose the appropriate voice to read in the correct
+language. Note that if you set the root html to english, then set another element to another language,
+the voice will switch back to the root set language after compelting the alt reading. */
+ 
+<html lang="en">
+
+
+/* Resetting Defaults. If you want to start fresh with no margins or padding
+And also recommended changing box systems: */
+
+body * {
+  box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* or */
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+/* Inline styling in an HTMl document :*/
+<div style="background: blue;">...</div>
+
+/* Using a sytle tag: */
+<!doctype html>
+<html>
+<head>
+ ...
+ <style>
+        div {
+            background: blue;
+        }
+        span {
+            display: block;
+        }
+        ...
+ </style>
+</head>
+<body>
+...
+</html>
+
+/* Example of html document linking to your CSS sheet: */
+<!doctype html>
+<html>
+<head>
+    ...
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+...
+</html>
+
+/* Chaining Selectors. A note on all selectors, IDs are more specific, then classes, 
+then normal elements. This means that the more specific the selectore, the more 
+power to override alternate edits the styling has. The code below would only select 
+h1 elements with a class of special: */
+
+h1.special {
+
+}
+
+/* Selecting nested elements. In the below example, li is selected if it is 
+a child of an element with class main-list: */
+
+.main-list li {
+
+}
+
+/* Selecting multiple selectors, seperated by a comma: */
+
+h1, .menu {
+  font-family: Georgia;
+}
+
+/* Combos -target elements that have two or more classes, say for example that have 
+both class .foo and .bar: */
+
+.foo.bar {
+  font-size: 30px;
+}
+
+/* If you wanted to select only P elements that have .foo.bar class. Note that
+when you have an element as part of this type of target, it should be put first,
+with classes chained after. */
+
+p.foo.bar {
+  font-size: 30px;
+}
+
+/* Descendant and direct child selectors. Targeting elements that are children of
+another element. NOTE in this format, ALL p inside of aside will be selected, no 
+matter how far down the hierarchy. I.E. all p that appear within an aside element: */
+
+aside p {
+  /* rule * /
+}
+
+/* For when you need to target only elements that are direct children of an element. 
+This would target the FIRST LAYER p in the aside, but not any p further down
+in the hierarchy. */
+
+aside > p {
+  /* rules */
+}
+
+/* ::before and ::after pseudo-elements. Allows you to render content just before or
+after your element. Great for creating smart quotes around blockquotes. The below
+exmpale creates an icon just BEFORE the li, which had the bullet removed. */
+
+ul li::before {
+  content: "\f121";
+  font-family: FontAwesome;
+  color: blue;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+
+/* Anchor pseudo-classes - 
+a:link - unvisited link
+a:visited - visited link
+a:hover - mouse hover
+a:focus - keyboard focus on link
+a:active - you've clicked but not released the link */
+
+/* Attribute selectors - target elements by attribute value. Such as targeting
+specific kinds of form inputs, such as input[type="radio"] to apply rules only to
+radio selector inputs. There are several options:
+  -exact match: element[attribute=value]
+  -match pattern anywhere in value: element[attribute*=value]
+  -match patter at beginning of value: element[attribute^=value]
+  -match pattern at end of value: element[attribute$value]
+
+In the below example, we select img element with attribute src and containing anywhere "dog",
+and then rotating that picture if it contains that word: */
+
+img[src*=dog] {
+  transform: rotate(180deg);
+  }
+
+
+
+/* !important. If you want to override CSS specificity on a lower selector, you can
+add !important after the value of a property and it will override all others. Should
+be avoided if you can. The below example will style p as blue:. */
+
+p {
+    color: blue !important;
+}
+
+.main p {
+    color: red;
+}
+
+/* To resize the actual input type radio buttons: */
+
+input[type=radio] {
+  border: 0px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Text Align. Text will always defaultly appear on the left side of the browser. 
+To align text we use the text-align property, which will align all text elements
+that hold the selected element or parent. This can be set to left, center, or right.
+ Ex:*/
+
+ h1 {
+    text-align: right;
+  }
+
+  /* Color. You can style either the foreground color or background color. 
+  Foreground color is just the color that an element appears in. This  is simply
+  known as "color" in properties, while background color is "background-color". Ex: */
+
+  h1 {
+    text-align: right;
+  }
+
+  /* Opacity. One way to style an elements opacity is as shown. */
+
+  .overlay {
+    opacity: 0.5;
+  }
+
+  /* To set a background image for a container. URL or Local: */
+
+  .main-banner {
+    background-image: url("https://www.example.com/image.jpg");
+  }
+
+  .main-banner {
+    background-image: url("https://www.example.com/image.jpg");
+  }
+
+  /* to give a background image a darker overlay, you can add a linear-gradient like so: */
+
+  .main {
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://www.example.com/image.jpg")
+  }
+
+  /* "background-size" If you want the background to fit the container, you can use either "contain" 
+  which will cause the image to be full size according to the specified width and height ratio, if not
+  the true width and height of the div. Or you can use "cover" to stretch the image to the size of the 
+  container. This will stil be subject to the width/height ratio and so part may be cut off*/
+
+  .main-banner {
+    background-image: url("https://www.example.com/image.jpg");
+    background-size: contain;
+  }
+
+  .main-banner {
+    background-image: url("https://www.example.com/image.jpg");
+    background-size: cover;
+  }
+
+  /* To use the entire image to fit the container without cutting off any and being subject to 
+  the width and to fill the container: */
+
+  .main-banner {
+    background-image: url("https://www.example.com/image.jpg");
+    background-size: 100% 100%;
+  }
+
+  /* Box Model. Contains properties of an element on the page. This includes width, height, padding,
+  border, and margin. Where padding is the pace between content area and the border, and margin is the 
+  space between the border and outside edge of the element. */
+
+  /* Border Radius. This property changes the roundness of borders. Ex: */
+
+  div.container {
+    border: 3px solid rgb(22, 77, 100);
+    border-radius: 5px;
+  }
+
+  /* You can even make a container into a perfect circle by setting border-radius to 100%. Ex: */
+
+  div.container {
+    border: 3px solid rgb(22, 77, 100);
+    border-radius: 100%;
+  }
+
+  /* On padding, margins and their syntax. You can set the individual value of each side. Ex: */
+
+  p.content-header {
+    border: 3px solid fuschia;
+    padding-bottom: 10px;
+    padding-top: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  /* Or you can set all sides with the following syntax, starts from the top, moves clockwise: */
+
+  p.content-header {
+    border: 3px solid grey;
+    padding: 6px 11px 4px 9px;
+  }
+
+  /* Or you can futher shorten this sntax if the top and bottom are equal, and the right and left are
+  equasl. You can then use the following, where the first value sets the top and bottom and the second
+  value sets right and left. note that this syntax works the same for margins. */
+
+  p.content-header {
+    padding: 5px 10px;
+  }
+
+  /* Or shorten even further, if all values are the same this will set all sides. Ex: */
+
+  p.content-header {
+    padding: 5px;
+  }
+
+  /* On Margine collapse. It should be noted that for margins, the top and bottom margins "collapse". 
+  What this means is that the true margin between elements is equal to whichever is larger, as they 
+  do not get added together. Left and right margins are added together. In the following example, the 
+  effective margin length between the two elements is still only 30px: */
+
+  #img-one {
+    margin-bottom: 30px;
+  }
+  
+  #img-two {
+    margin-top: 20px;
+  }
+
+  /* min/max-height/width. For chaning screen sizes, these properties  cna help content. Ex: */
+
+  p {
+    min-width: 300px;
+    max-width: 600px;
+  }
+
+  p {
+    min-height: 150px;
+    max-height: 300px;
+  }
+
+  /* On Overflow. Remember that designating a width and height for an element will includ 
+  the margins and padding. When the content spills outside of the container, you can do something
+  about this using the overflow property, with values of hidden, scroll, or visible. 
+
+  hidden - any content overlowing will be hidden from view.
+  scroll - a scrollbar is added to the element box so the rest of the content can be viewed by scrolling.
+  visible - conent will simply be displayed outside of the containing element - default. */
+
+  p {
+    overflow: scroll;
+  }
+
+  /* Visibility. You can effectively hide elements if you're still working on them. Use
+  the visibility property with either value of hidden or visible. Ex: */
+
+  .future {
+    visibility: hidden;
+  }
+
+  /* Note that setting padding and margins on top of a designated height and width actually
+  ADDS to the overall width in height in the traditional box model. This is set using the box-sizing property. 
+  The default value of this proper is content-box. 
+
+  You can change from the contnet-box to Border-box, which will avoid this added problem. 
+  Using this setting, the height and width remain fixed. Border thickness and padding are included
+  in the dimensions. In the example below, the height and width are fixed, padding is included. Ex: */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  h1 {
+    border: 1px solid black;
+    height: 200px;
+    width: 300px;
+    padding: 10px;
+  }
+
+  /* Display and Positioning. Starting with Position which can have one of four values:
+
+  static - default 
+  
+  relative - allows you to positoin the element RELATIVE to its default position. You must then specify 
+  WHERE you would like it to be positioned. The designation moves the element FROM which side
+  is designated. NOTE that unlike fixed positioning in which elements are removed from the normal flow,
+  relative postion elements stay in the flow of the html. In the below example, the element is moved 20px 
+  FROM the top and 50px FROM 
+  the left. Ex */
+
+  .box-bottom {
+    background-color: DeepSkyBlue;
+    position: relative;
+    top: 20px;
+    left: 50px;
+  }
+
+/*absolute - all other elements on the page will ignore the element and act as if it is not present
+on the page. The element will be positioned relative to its closest positioned parent element. This 
+element will still scroll. Ex: */
+
+.box-bottom {
+    background-color: DeepSkyBlue;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+  }
+
+/*fixed - fixes and element in place regardless of scrolling. Useful for nav or menu bars. Ex: */
+
+.box-bottom {
+    background-color: DeepSkyBlue;
+    position: fixed;
+    top: 20px;
+    left: 50px;
+  }
+
+  /* Z-index. Sometimes content will overlap. You can give elements a Z-index and whichever element has
+  the greater Z-index integer will be in front. This does not work on static elements. Below the .box-top 
+  class element will be in fron of .box-bottom as it has the greater z-index. Ex: */
+
+  .box-top {
+    background-color: Aquamarine;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .box-bottom {
+    background-color: DeepSkyBlue;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    z-index: 1;
+  }
+
+  /* Display. Three values: inline, block, and inline-block. 
+
+  inline - some tags this is their default: <em><strong><a> for examples. Inline elements have a box that 
+  wraps tightly around their content and only take up the min space to display - does not require a new line.
+  Note that the height and width of these elements CANNOT be set. In the exmple below, all elements are 
+  inline and shown in the same line. Ex: */
+
+  h1 {
+    display: inline;
+  }
+
+  /* Just another example of all inline elements */
+
+  To learn more about <em>inline</em> elements, read <a href="#">MDN documentation</a>.
+
+/* block - block-level elements fill the entiire width of the page by default, but their width property     
+CAN be set. Height can also be set, but this is typically defaulted to what is necessary to contain the 
+content. Examples include <h1>-<h6><p><div><footer>. In the below exmaple, all elements with the <strong>
+tag will be displayed on their own lines. Ex: */
+
+strong {
+    display: block;
+  }
+
+
+/* inline-block - combines features from both inline and block elements. These can appear next to each other
+and you CAN set height and width properties. Images are defaultly inline-block. In the below 
+example, all elements in the parent container of .rectangle should now have a display of ineline-block
+and therefore should appear next to one another, I think.Ex: */
+
+<div class="rectangle">
+  <p>I’m a rectangle!</p>
+</div>
+<div class="rectangle">
+  <p>So am I!</p>
+</div>
+<div class="rectangle">
+  <p>Me three!</p>
+</div>
+
+.rectangle {
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+  }
+
+  /* Float.  If you're interested in simply moving an element as far left or right as possible, use 
+  the float property. Float can be set to one of two values: left or right. Floated elements must have
+  a set height and width. Otherwise the element assumes the full width of containing element and chaning
+  this value would not change anything. Ex: */
+
+  .boxes {
+    width: 120px;
+    height: 70px;
+  }
+  
+  .box-bottom {
+    background-color: DeepSkyBlue;
+    float: right;
+  }
+
+  /* Clear. The clear property specifies how elements should behave when they bump into each 
+  other on the page. This can have four values: 
+    left - left side of the element will not touch any other element within the same containing element.
+    right - right side of the element will not touch any other element within the same containing element.
+    boht - neither side of the element will touch any other element within the same containing element. 
+    none - the element can touch either side. Ex: */
+
+    div {
+        width: 200px;
+        float: left;
+      }
+      
+      div.special {
+        clear: left;
+      }
+
+      /* Actions on elements. Hover as an example. If you desire something to change or happen
+      with interation from the mouse, in CSS, use the element:action {} syntax. Such as the 
+      following example which changes the background color of the button if a mouse hovers
+      over it: */
+
+      button:hover {
+        background: blue;
+      }
+
+      /* Text shadow. This was required for a Revature project. This is apparently a CSS property 
+      that adds shadows to text. Each shadow is described by some combo of X and Y offsets from the 
+      element. With this syntax:     offset-x | offset-y | blur-radius | color */
+
+ /* offset-x | offset-y | blur-radius | color */
+text-shadow: 1px 1px 2px black; 
+
+/* color | offset-x | offset-y | blur-radius */
+text-shadow: #fc0 1px 0 10px; 
+
+/* offset-x | offset-y | color */
+text-shadow: 5px 5px #558abb;
+
+/* color | offset-x | offset-y */
+text-shadow: white 2px 5px;
+
+/* offset-x | offset-y
+/* Use defaults for color and blur-radius */
+text-shadow: 5px 10px;
+
+/* Global values */
+text-shadow: inherit;
+text-shadow: initial;
+text-shadow: unset;
+
+/* Colors. Colors are described in various ways: named colors, Hexadecimal RGB, and HSL.
+There are 147 named colors. 
+
+Hexadecimal - A hex color begins with a hash character (#) which is folllowed by three or
+six characters. The characters represent values for red, blue, and green. This isystem also uses
+hexadecimal number system, such that it has 16 digits (0-15) instead of 10 (0-9). 
+To represent 10-15, we use A-F. Ex: */
+
+DarkSeaGreen: #8FBC8F
+Sienna:       #A0522D
+SaddleBrown:  #8B4513
+Brown:        #A52A2A
+
+/* The below colors can be reduced in length as the number pairs are the same character. */
+
+Black:        #000000 or #000
+White:        #FFFFFF or #FFF
+Aqua:         #00FFFF or #0FF
+
+/* RGB. three values that are red, blue, and green. Each value can be 0-256. */
+
+h1 {
+  color: rgb(23, 45, 23);
+}
+
+/* HSL. Hue, Saturation, and Lightness. Very close to how compuiters represent colors internally. 
+The first number represents the degree of hue, 0-260. The second and third numbers are 
+percentages representing saturation and lightness. Saturation is the intensity or purity of 
+the color. Lightness is just how light or dark that color is. 50% is normal. Ex: */
+
+
+p {
+  color: hsl(120, 60%, 70%);
+}
+
+/* Opactiy. An "alpha" opacity value can be added to the property, this includes both
+HSL and RBG. Ex: */
+
+p {
+  color: hsla(34, 100%, 50%, 0.1);
+}
+
+/* Typography. Font-family controls what font is used to style the text. Ex: */
+
+h1 {
+  font-family: Garamond;
+}
+
+/* Note that if the font-family has more than one word it must be in quotes: */
+
+h1 {
+  font-family: "Courier New";
+}
+
+/* Font-weight. This property controls the thickness of text. 400 is default, ranges
+100-900, which 900 being thickets. 700 is considered bold, and 300 light. Ex: */
+
+header {
+  font-weight: 800;
+}
+
+footer {
+  font-weight: 200;
+}
+
+/* Font-style. You can normalize, italicize, and bold (I think?). Ex: */
+
+h3 {
+  font-style: italic;
+}
+
+/* Word-spacing. Changes the space between words in a body of text. Ex: */
+
+h1 {
+  word-spacing: 0.3em;
+}
+
+/* Letter-spacing. Changes the space between letters. Ex */
+
+h1 {
+  letter-spacing: 0.3em;
+}
+
+/* Text-transform. Another way to change text styling. You can set this to uppercase or
+lowercase, and capitalization (which will cap the first letter of each word) Ex: */
+
+h1 {
+  text-transform: uppercase;
+}
+
+/* Text-alignment. Text defaultly aligns on the left side of the browser. We use this property
+to align text OR any INLINE element, even images. This can take values: left, center, or right. Ex: */
+
+h1 {
+  text-align: right;
+}
+
+/* line-height. This property modifies the leading (line above) height of the text line. 
+This property can take a unitless number such as 1.3, or take a specified unit, like 12px. Ex: */
+
+p {
+  line-height: 1.4;
+}
+
+/* Fallback fonts. If the user's computer/browser does not have the font you have selected,
+you can set fallback fonts to use. Ex: */
+
+h1 {
+  font-family: "Garamond", "Times", serif;
+}
+
+/* Linking Fonts. Google is an excellent example of a font repository. You simply link the 
+information into the html sheet in the head section. Ex: */
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif" type="text/css" rel="stylesheet">
+</head>
+
+/* Linking fonts to your CSS stylesheet using the @font-face property. If you find a link 
+in google fonts, instead of putting this link into your html, place the link in your web browser
+to bring up the CSS rules for the front. Focus on the rules directly labled /* latin */
+/* Copy each of the CSS rules labeled latin, past the rules from the browers to the top
+of the css style sheet. Now you can style font-family: Raleway and this should work.Ex: */
+
+/* latin */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), local('Raleway-Regular'), url(https://fonts.gstatic.com/s/raleway/v12/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* On changing a nav/ul to an inline-block structure. Must be enacted on the li themsevles: */
+
+.nav-list li {
+  display: inline-block;
+}
+
+/* If you want to vertically align text or links within thier containers, use line-height.: */
+
+li {
+  height: 30px;
+  line-height: 30px;
+}
+
+/* To remove bullets from ul: */
+
+ul {
+  list-style-type: none;
+}
+
+
+
+/* Images. Setting them as the background of a div. This can be done with the following ex: */
+
+body {
+  background-image: url("gradient_bg.png");
+}
+
+/* To repeat the background in either x or y direction, use the background-repeat property: */
+
+body {
+  background-image: url("gradient_bg.png");
+  background-repeat: repeat-x; /* or background-repeat: repeat-y; */
+}
+
+/* To have the background not repeat at all use the background-repeat property: */
+
+body {
+  background-image: url("img_tree.png");
+  background-repeat: no-repeat;
+}
+
+/* The positoin of the image is specified by the background-position property: */
+
+body {
+  background-image: url("img_tree.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+/* To have a background that does not move when scrolling, you use a fixed attachament: */
+
+body {
+  background-image: url("img_tree.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+}
+
+/* Using the background-size property. You can set this with pixels, auto, cover, or contain: */
+
+#example1 {
+  background: url(mountain.jpg);
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+#example2 {
+  background: url(mountain.jpg);
+  background-repeat: no-repeat;
+  background-size: 300px 100px;
+}
+
+/* cover - will resize the image to fit the entire container or div, even if it has to stretch or cut off
+a little bit on the edges.
+
+contain - will resize the image to make sure the image is fully visible. 
+
+initial - sets it to default.
+
+inherit - Inherits property from parent element. */ 
+
+#example1 {
+  background: url(mountain.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* You could even have two images next to each other in the background and style them: */
+
+#example1 {
+  background: url(img_tree.gif), url(mountain.jpg);
+  background-repeat: no-repeat;
+  background-size: contain, cover;
+}
+
+/* when attempting to style the color of li in ul or ol, if they are LINKS also, remember to stlyle the
+anchor. My own example: */
+
+nav a {
+  color: hsl(220, 50%, 50%);
+}
+
+/* If you want to rotate images you can use these CSS Styling examples: */
+
+.rotate90 {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+ }
+ .rotate180 {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+ }
+ .rotate270 {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+ }
+
+ /* Fixing images in place. This is done with the background-attachment property and settting it to 
+ fixed: */
+
+ body {
+  background-image: url("img_tree.gif");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* CSS Transitions - Transition has 4 components: property, duration, timing-function, and delay.
+  Transition-delay: specifies the amount of time before a transition starts
+  Transition-duration: amount of time between states ina  transition.
+  Transition-timing-function: (easing) specifies how to transition between states
+  Transiton-property: specifies the CSS property to animate.
+
+  You cannot animate all CSS properties
+  Required components of transition: 
+    I think it's property and duration.
+    Ex: */
+
+  .button {
+    /* Manage state on **return** for the differnt browsers which may not support */
+    transition-property: border-radius;
+      -webkit-transition-property: border-radius; /* Chrome */
+      -moz-transition-property: border-radius; /* Firefox */
+      -o-transition-property: border-radius; /* Opera */
+
+    transition-duration: 2.3s;
+      -webkit-transition-property: 2.3s;
+      -moz-transition-property: 2.3s;
+      -o-transition-property: 2.3s;
+  }
+
+  .button:hover {
+    border-radius: 23px; /* sets the border-radisu */
+    transition-property: border-radius;
+      -webkit-transition-property: border-radius; /* Chrome */
+      -moz-transition-property: border-radius; /* Firefox */
+      -o-transition-property: border-radius; /* Opera */
+
+    transition-duration: 0.3;
+      -webkit-transition-property: 0.3s;
+      -moz-transition-property: 0.3s;
+      -o-transition-property: 0.3s
+  }
+
+/* you can use a shorthand using this syntax:
+transition: property duration [timing-function][delay]    
+Ex: */
+
+transition: background 1s ease 0.5s;
+
+/* You can also affect more than one element, EX: */
+
+.button:hover {
+  background: blue;
+  border-radius: 23px; /* sets the border-radisu */
+  transition-property: border-radius, background;
+    -webkit-transition-property: border-radius, background; /* Chrome */
+    -moz-transition-property: border-radius, background; /* Firefox */
+    -o-transition-property: border-radius, background; /* Opera */
+
+  transition-duration: 0.3;
+    -webkit-transition-property: 0.3s;
+    -moz-transition-property: 0.3s;
+    -o-transition-property: 0.3s
+
+  transition-timing-function: linear;
+  transition-delay: 2s;
+}
+
+
+
+/* Responsive Layouts with Flexbox - Helps to avoid problems encoutered when layouts
+go from desktop to a mobile device or tablet. 
+  -Responsive Layout - one that adjusts or responds to the size of the screen. 
+  - Flexbox hels elements to line up neatly on a page more efficiently and
+  keeps neat alignment when the size of the screen changes.
+  - To use flexbox, simply assign a container with the CSS property 
+  "display: flex;" The container can be any element on the HTML page, including
+  the <body> element. All direct children of the container are called items and
+  are arranged by flexbox. 
+  - The flexbox model works by specifying either the behavior of the container or
+  the items within it. 
+
+  Flex has 3 main properties:
+    -flex-direction - main axis of the container, whether items are laid out horizontally
+    in row or vertically in column. 4 possible values: 
+        -row - default and left to right
+        -row-reverse - items laid from right to left
+        -column - items laid top to bottom
+        -column-reverse - bottom to top
+      Ex: */
+
+      #container {
+        display: flex;
+        flex-direction: row;
+      }
+
+    /* -continued-
+    -justify-content - controls how items are arranged on the main access. Some values:
+        -center
+        -flex-start - Begins at specified start of row or column
+        -flex-end - ""
+      ~to handle the extra space not taken up by the items.
+        -space-between - Puts the max space BETWEEN items, but not necessarily around the edges where 
+        there are no more items. 
+        -space-around - Appears more even but with more space on edges? But not as much as evenly...?
+        -space-evenly - puts even amount of space around each item, including edges. 
+      Ex:*/
+
+      #wall {
+        display: flex;
+        justify-content: space-around;
+        
+      }
+
+    /* -continued-
+    -align-items - aligns items along the corss axis, perpendicular to main axis. 
+    Similar to justify-content, values are also:
+      -center
+      -flex-start - Begins at specified start of row or column
+      -flex-end -"" 
+    Ex:*/
+
+    #wall {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    /* flex-wrap: wrap; - This will cause items that no longer fit to screen to wrap and shift downward. */
+
+    /* order: #; - you can actually arrange items in a flex container despite how they are arranged in html. For example, the below, even though main is before the .side-bar, the order property is set to display in that order from left to right.  */
+    .container {
+      display: flex;
+    }
+
+    main {
+      flex: 3;
+      order: 2;
+    }
+
+    .side-bar {
+      flex: 1;
+      order: 1;
+    }
+
+  /* Adjusting invidiual items - 
+    align-self - property that is applied to the individual item instead of row or column. Values:
+      -center
+      -flex-start - Begins at specified start of row or column
+      -flex-end -"
+    Ex: */
+
+    #wall {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+    }
+    
+    .houses {
+      align-self: center;
+    }
+    
+    .abstract {
+      align-self: flex-end;
+    }
+    
+
+/* Mobile-first design - Terms:
+    -Graceful Degradation - Start with most complex layout with many features, then
+    try to remove features and rearrange elemtns to fit on a smaller screen.
+    -Progressive Enhancement - Start with the simplest design to work on the smalles
+    screen first, then progressively add features and rearrange the layout for larger
+    screens. *Easier choice*
+  The approach of using progressive enhancement is also known as Mobile-First Design. 
+  Consider small phone screen, tablet, desktop. 
+
+- Media Queries - Used to create different styles for different screen conditions. */
+
+    @media <media type> (<media features) {
+      <CSS Rules>
+    }
+
+/* Meida can be set to "all, print, screen, or speech". There are many media features, 
+some include, "width, height, orientation, or color". Ex: */
+
+  @media screen and (min-height: 680px) {
+    .heading {
+      color: blue;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .heading {
+      color: green;
+    }
+  }
+
+
+/* Viewport - the area of a browser's window in which content can be seen. The viewport
+meta tag was introduced to let you control the way your pages are scaled when rendered by
+a browser. Always add viedwport meta tag in the head of yoru obile optimized html pages. 
+This was introduced becuase mobile devices would usually render page for a larger screen,
+then shrink to fit. However, if you're already optimized the page it can cause issues for 
+the user. */
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+/* More on viewport
+  source: https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag */
+
+/* You can use @media screen with changing display to flex. Where .pictures
+is the container. Ex: */
+
+@media screen and (min-width: 800px) {
+  .pictures {
+    display: flex;
+  }
+}
+
+/* "breakpoint" = at which point you should modify the layout, size of screen. 
+  Ex of changing a stacked menu to a horizontal row display: */
+
+  @media screen and (min-width: 520px) {
+    .menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+ }
+
+ /* Flex-grow - To increase size of something as screen grows, such as a search bar, use 
+ flex-grow property. Specifies how items grow relative to each other to occupy available 
+ space. Setting flex-grow: 1; indicates all items will grow at an even rate. You can also
+ set certain items to grow at different rates. Ex: */
+
+ .menu > .item {
+  flex-grow: 1;
+}
+
+.menu > .search {
+   flex-grow: 2; /* grow twice as fast as others */
+}
+
+.menu > .item > input {
+  width: 90%;
+}
+
+.menu > .name {
+  flex-grow: 0; /* do not grow at all */
+}
+
+.menu > .logo {
+  flex-grow: 0;
+}
+
+
+/* Flex-basis - defines the initial size of an item in the container. Ex: */
+
+.menu > .name {
+  flex-grow: 0;
+  flex-basis: 120px;
+}
+
+.menu > .logo {
+  flex-grow: 0;
+  flex-basis: 35px;
+}
+
+/* Flex-Shrink - how items shrink to fit within container if necessary. Ex: */
+
+.menu > .item {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.menu > .search {
+  flex-grow: 2;
+}
+
+.menu > .item > input {
+  width: 90%;
+}
+
+.menu > .name {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 120px;
+}
+
+.menu > .logo {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 35px;
+}
+
+/* Flex shorthand - flex property takes 1-3 values depending on what you specifiy. Ex: */
+
+.menu > .item {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+/* Becomes: */
+
+.menu > .item {
+  flex: 1 1;
+}
+
+/* Using all 3 values, third slot being flex-basis: */
+
+.menu > .name {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 120px;
+}
+
+.menu > .name {
+  flex: 0 0 120px;
+}
+
+/* Note that using display: none; does not work on inline elements and they must be block. */
+
+
+@media screen and (max-width: 380px) {
+  body {
+    display: flex;
+]
+  .menu {
+    display: none;
+  }
+}
+
+
+/* Typography - Commen expectations:
+Sizing:
+Navigation links: 12-16px
+Paragraph text: 16-20px
+News Headlines: 32-48px
+Content Labels: 12-18px
+Photo Captions: 10-14px
+
+Line Spacing:
+12px: 14-18px
+16px: 20-14px
+24px: 30-36px
+32px: 40-48px
+
+Mobile Considerations:
+Test on multiple devices.
+
+Alignment: Center small amount of typorgraphy, such as a sentence or few words, anything longer than a paragraph should be off limits.
+Note that when choosing  between left and right alignment for paragraphs, you should use the alignemtn that matches the direction in which the language is read. English should be left-alignment. 
+
+Font: On screens, sans serif is typically easier to read. You should choose fonts like colors, contrast them. Resources:
+
+https://fontpair.co/
+https://femmebot.github.io/google-type/
+
+Colors - 
+Primary : Red, blue, yellow - can be mixed together to create other colors.
+Secondary : Result of mixing two primary colors together, green, purple, and orange. 
+Tertiary : Fall inbetween primary and secondary colors. 
+
+Website to test color-blind filter:
+https://www.toptal.com/designers/colorfilter
+
+*/
+
+
+
+/* Animate on Scroll Library - Used to cause effects like fade in or out on sections as you scroll to them. Source: 
+https://michalsnik.github.io/aos/
+
+CDN SOURCES
+CSS
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+JS
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+INITIALIZE AOS
+<script>
+  AOS.init();
+</script>
+ */
+ 
+
+
+ /* How to get footer to bottom of the screen - You can use flex box to make the containing div of a footer remaining content like so:
+ source: https://css-tricks.com/couple-takes-sticky-footer/
+ */
+ /* CSS: */
+
+ html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+}
+
+/* HTML */
+<div class="content">
+  <h1>Sticky Footer with Flexbox</h1>
+  <p><button id="add">Add Content</button></p>
+</div>
+
+<footer class="footer">
+  Footer 
+</footer>

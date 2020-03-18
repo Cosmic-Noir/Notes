@@ -1,0 +1,6 @@
+Math Equations:
+
+Area of a circle: 
+    where Math.PI is javaScript for PI
+    A = Math.PI * radius^2
+

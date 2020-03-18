@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- This plus tab -->
+    h1
+    <!-- becomes -->
+    <h1></h1>
+
+    <!-- This plus tab -->
+    head.main-header>h1
+    <!-- becomes -->
+    <head class="main-header">
+        <h1>My h1 yay!</h1>
+    </head>
+
+    <!-- This plus tab -->
+    nav>ul>li>a[href="#"]{link}
+    <!-- Becomes this -->
+    <nav>
+        <ul>
+            <li><a href="#">link</a></li>
+        </ul>
+    </nav>
+
+    <!-- This plus tab -->
+    nav>ul>li*4>a[href="#"]{link}
+    <!-- becomes -->
+    <nav>
+        <ul>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Projects</a></li>
+        </ul>
+    </nav>  
+
+    <!-- This plus tab will make li numbered -->
+    nav>ul>li*4>a[href="#"]{link$}
+    <!-- becomes -->
+    <nav>
+        <ul>
+            <li><a href="#">link1</a></li>
+            <li><a href="#">link2</a></li>
+            <li><a href="#">link3</a></li>
+            <li><a href="#">link4</a></li>
+        </ul>
+    </nav>
+
+
+
+</body>
+</html>

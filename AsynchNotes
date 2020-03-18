@@ -1,0 +1,80 @@
+Asynchronous Web Apps - client-side apps that can request and display data from servers in response to user actions.
+    Terms:
+    -Clients- the browser, referred to in web development as the client (or "frontent") - a web-accessing device or software. 
+    -Servers- "backstage". Servers expose resources to clients, which could be HTML, CSS, JavaScript, image, video, or audio files. Servers make it possible for clients to get the files, data, and other resources they need in order to do something valuable for the end user. 
+        *Note that a CLIENT requests resources and a SERVER exposes resources. 
+    -Requests- Clients, or browsers, make requests to servers for resources, such as html, css, JavaScript, ect.
+    -Responses- are sent from the server to the browser to provide the requested resources. 
+    -APIs- Application Programming Interface. A specification allowing two systems to communciate. 
+    -Internet- the hardware that facilitates the transfer of data between smaller networks
+    -Web- a collection of interlinked documents with a set of rules and identifiers for retrieving them via the internet.
+    -Hypertext-
+    -AJAX- Asynchronous JavaScript and XML. Allows you to build web pages that make requests to multiple serves without loading a new page. The data or logic is implemented in the JavaScript layer of the app. 
+    -XML- Refers to the XML data format, which alongside JSON is a common response format that the server responds with.
+    -JSON- JavaScript object notation. 
+    -Asynchronous- App can work "behind the scenes" and pull data without changing the page. 
+    -LAN- Local Area Network
+    -HMTL- the way we write and structure content for the web.
+    -URIs- (Uniform Resource Identifiers) - also known as URLs (Uniform Resource Locators), the way to identify distrinct resources on the web.
+    -HTTP- (Hypertext Transfer Protocol) the set of rules governing how browsers and servers communicate with one another.
+
+    -Request Header- Includes things like "authorization" and "content-type". Some API's require particular headers to make the requests valid, which you can find by reviewing the API's documentation. 
+    -Response Header-
+    -Body- Optional and only included if there's data tha tneeds to be submitted with the request. 
+    -HTTP status Codes-
+    -HTTP Methods-
+
+    -HTTP Messages - Broken into 4 parts, with differences between the request and response messages.
+        -Start-line: A high-level description of the message.
+        -HTTP Headers: Details describing the message.
+        -Empty Line: a space to seperate the meta-data from the body of the message.
+        -Body: The data included in the message.
+    - GET tells the server the request is trying to GET a resource. GET is one of several HTTP methods that describe what a request is trying to do. 
+    - "/" means "at", where "/" is the root of the homepage. 
+    -HTTP Methods (some). Operations are known as "CRUD Operations" (Create, Read, Update, and Delete):
+        -Method - Operation - Definition        -                              Example:
+        POST    - Create    - Submits an entity to the specified resource.     - Adding a comment; submitting a tweet.
+        GET     - Read      - Requests a representation of the specified resource. - Getting search results; getting the HTML file for a page. 
+        PUT     - Update    - Replaces all current representations of the specified resource. - Editing your account information; editing a blog post.
+        DELETE  - Delete    - Deletes the specified resource.                   - Deleting a photo; removing an item from a list. 
+
+    - Response Messages- "HTTP/1.1 200" - the HTTP/1.1 Tells us which HTTP rules the client is following. While the 200 is a HTTP status code, telling us the status of the request.Common response codes:
+        -200 OK- Request succeeded.
+        -201 Created- The request succeeded and a resource was created. 
+        -401 Unauthorized- The request requires authentication.
+        -404 Not Found- The server has not found any resource matching the request URL.
+        -500 Internal Service Error- The server encountered an unexpected condition that prevented it from fulfilling the request. 
+
+-JSON Anatomy of Responses- Used as a way to commuinicate data between a client and server, especially useful for Asynchronous communication. Slightly different from normal JavaScript Objects. JSON properties MUST be strings, surrounded by quotation marks. JSON is also compatible with non-JavaScript languages. 
+
+
+-API Documentation- Questions to ask when using an API:
+    -Cost - do you have to pay? is there a free tier? What are the limitations?
+    -Authentication- Required? Most require registration
+    -API Key- Usually with auth, how do you get one?
+    -Base URL- What is the base URL of the API?
+    -CORS(Cross-origin resource sharing)- Does it support CORS? Necessary if you want to make calls to this API from the browser. 
+    -Responses- What data format is available? Most provide JSON, but not always, XML is also popular. Whare are the status codes that might be returned by the endpoint? What is the strucutre of the data returned by this endpoint? What limitations exist on the returnted data?
+    -Examples- Are there examples of typical calls? 
+    -Endpoints- What endpoints are available? 
+        -What is the endpoint URL?
+        -Which HTTP method is used to call the endpoint?
+        -What path parameters are needed? 
+        -What query parameters are needed?
+        -What body parameters are needed?
+        -Which parameters are required and which are optional?
+        -For each parameter: 
+            -What is the data type of the parameter value?
+            -What are the valid sets of values that are allowed for this parameter?
+            -If the parameter is optional, what default value is used by the API?
+    *Note that API Documentaiton does not always answer all of the above questions. 
+
+
+Simple Get Requests
+    -GET requests- read-only requests for data from a server    
+    -Fetch API- a JavaScript interface for making aysnchronous requests to a server.
+    -Promises- A promise is a returned object that can be used in the future. 
+    -JSON-
+
+
+You can say a request is "Asynchronous" because the page does not reload.
