@@ -51,13 +51,15 @@ puts "Kristen".downcase
 
 rb string_to_change.gsub!(/s/, "th") 
 
+# - .sort_by - Can sort an object by either key or values and return an array of arrays? 
+
 # - .split - takes a string and returns an array, takes an argument called a 'delimiter':
 
 text.split("")
 text.split(" ")
 text.split(",")
 
-
+# - .to_s - Tuns a number into a string
 
 # Chaining Methods: Can do seperately or chained together:
 
@@ -253,3 +255,92 @@ end
 
 # Example of building a small program :
 
+
+# Hash Maps - Key value pairs are assigned with the => like so:
+
+hash = {
+  key1 => value1,
+  key2 => value2,
+  key3 => value3
+}
+
+# You can also create a new Hash by calling it with the .new method and assigining it to a variable name:
+
+pets = Hash.new
+
+# You can add key value pairs in two ways, by addinto to the hash literal with key value pairs inbetween the brackets, or like this:
+
+pets["Ted"] = "Theodore"
+
+# Accessing the values in an array is the same as JS:
+
+puts pets["Ted"]  # prints Theodore
+
+# Iterating over objects and arrays is similar and you can use .each and you can even use two variables to represent the key value pairs:
+
+friends = ["Milhouse", "Ralph", "Nelson", "Otto"]
+
+family = { "Homer" => "dad",
+  "Marge" => "mom",
+  "Lisa" => "sister",
+  "Maggie" => "sister",
+  "Abe" => "grandpa",
+  "Santa's Little Helper" => "dog"
+}
+
+friends.each { |x| puts "#{x}" }
+family.each { |x, y| puts "#{x}: #{y}" }
+
+# You can easily iterate through arrays:
+
+languages = ["HTML", "CSS", "JavaScript", "Python", "Ruby"]
+
+languages.each { |language| 
+  puts language
+}
+
+# Iterating over mutli dimensional arrays - Creat nested .each loops:
+
+s = [["ham", "swiss"], ["turkey", "cheddar"], ["roast beef", "gruyere"]]
+
+s.each { |array| array.each { |item| puts item}}
+
+# With Hash Maps you have to have two variables, one for each key and value in the map.
+
+secret_identities = {
+  "The Batman" => "Bruce Wayne",
+  "Superman" => "Clark Kent",
+  "Wonder Woman" => "Diana Prince",
+  "Freakazoid" => "Dexter Douglas"
+}
+  
+secret_identities.each {|x, y| puts "#{x}: #{y}" }
+
+# Hash maps also take an optional argument of the default value for any key added without a value. Note that if you try to access a key that does not exist, you get the default value.
+
+h = Hash.new(0)
+h = Hash.new("default value")
+
+# Example of a small program that takes user input, splits the words into an array, creates a new hash table with a default value of 0, 
+then for each word in the array, it adds the word to the hash at a value of 1, or the existing value is increased by 1. Then, the hash
+is sorted by the count, then reversed, then another .each loop prints the word and count of each key value pair. 
+
+puts "Please type something:"
+text = gets.chomp
+words = text.split(" ")
+
+frequencies = Hash.new(0)
+
+words.each { |word | 
+frequencies[word] += 1
+ }
+
+frequencies = frequencies.sort_by do |word, count|
+  count
+end
+
+frequencies.reverse!
+
+frequencies.each { |word, count|
+  puts word + " " + count.to_s
+}
