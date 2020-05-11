@@ -4093,3 +4093,27 @@ Connection URL:
 npm install jsonwebtoken
 
 npm i bcryptjs
+
+
+
+// Passport js - authentication middleware for Node.js. States it has a comprehensive set of strategies that support authentication using a username and password, Facebook, Twitter, ect. These notes are using Passport's 'local' strategy to use username and password. Install:
+
+npm install passport-local
+
+// The below will authenticate a user with username and password. This requires a callback which accepts credentials and calls 'done' providing a user:
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      if (!user.verifyPassword(password)) { return done(null, false); }
+      return done(null, user);
+    });
+  }
+));
+
+// No further relevant passport notes to my current project, nothing matches syntax, ending passport.js notes here....
+
+
+// Jest testing: 

@@ -10,7 +10,7 @@ npm install redux react-redux
 
 // ACTION - describes what you want to do. 
 
-// REDUCER - describes how actions transform state into next state - checks which action was done, then modifies state based on the action. 
+// REDUCER - describes how actions transform state into next state - checks which action was done, then modifies state based on the action. "Reduces" store state and change you want to make to the store, into one state (updates the store).
 
 // DISPATCH - "Dispatch this action to the reduer - reducer will check what to do"
 
@@ -173,6 +173,7 @@ export const decrement = () {
 // Next, we must import useDispatch with useSelector. You can then use any "action" or function via the dispatch.
 
 import { useSelector, useDispatch } from 'react-redux';
+import { listeners } from 'cluster';
 
 function App () {
     const counter = useSelector(state => state.counter);
@@ -216,3 +217,191 @@ const counterReducer = (state = 0, action) => {
 
 
 // Video source: https://www.youtube.com/watch?v=CVpUuw9XSjY
+
+
+// Notes from egghead.io video series:
+// Source: https://egghead.io/lessons/react-redux-the-single-immutable-state-tree
+
+// 3 Principles of Redux:
+// 1. Everything that changes in the app, including data and UI state, is contained in a single object, called the State, or State Tree. You represent the state of the entire app as a single object. All changes are explicit. 
+// 2. Actions - The State Tree is redundant. The only way to change it is to dispatch an action, a js object, which describes what changed in the object. All data must be obtained by actions. You cannot write-to it. Anytime you need to make a change, you use an action. Components dispatch actions with a certain type. 
+// 3. Reducers - what makes redux fast- To describe state mutaionts, you must write a functino that takes the previous state, the action being dispatched, and returns the next state of the app, and must be a pure function that returns a new object. 
+
+// Pure function - do not have any observable side effects, simply calculate a new value, so you can be confident that calling with the same arugments prodcuce the same results. They also never overwrite the original value, but returns a new value. Depends solely on the value of it's arguments, not on server calls or databases. They are predictable and do not modify values passed to them. For examples, using .map(), which returns a NEW array. 
+
+// Impure functions - call databases or networks, may operate on the DOM, may mutate the values passed to them. 
+
+// Some functions in redux must be pure. Takes the state of the application with the action, and returns a new action that is the new state. 
+
+// Action - plain javascript object that is the minimal representation of the change to that data. It requires a 'type' property. Components need to dispatch an action with a type, sometimes passing an arguement. All plain objects. Any data inside the application gets there by being dispatched to an action. 
+
+// Reducer - takes current state, action type, and returns new object of updated state. Ex:
+
+function counter(state, action){
+  if (action.type === 'INCREMENT') {
+    return state + 1;
+  } else if (action.type === 'DECREMENT') {
+    return state - 1;
+  } else {
+    return state;
+  }
+}
+
+// ES6 default argument, arrow function syntax, and SWITCH case version of the above
+
+const counter = (state = 0, action) => {
+  switch (action.type){
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    default:
+      return state;
+  }
+}
+
+// Note that reducers should have a default return that returns the original state in case the action type passed is undefined. If the reducer receiveces undefined as state, it should always return the original state. 
+
+// Sotre holds current applications state, lets you dispatch actions, and you must specify reducers to especify how sxtate is updated by actions. The store has 3 important mentods:
+  // getState() - returns current state of Redux store
+  // dispatch() - lets you dispatch actions to modify your state - most commonly used. 
+  // subscribe() - lets ou register a callback that will be called anytime a dispatch is called. So you caould call your render function, so that ANYTIME a dispatch (or change to the store) is made, the app will re-render:
+
+// ES6 destructure:
+
+const { createStore } = Redux;
+const store = createStore(counter);
+
+const render = () => {
+  ReactDOM.render(
+    <Counter value ={store.getState()} />,
+    document.getElementById('root');
+  )
+};
+  
+store.subscribe(render);
+render();
+
+
+// So - apparently we are going to re-create the createStore function provided by Redux by scratch:
+
+ const createStore = (reducer) => {
+    const getState = () => state;
+
+    const dispatch = (action) => {
+      state = reducer(state, action);
+      listeners.forEach(listener => listener());
+    };
+
+    const subscribe = (listener) => {
+      listeners.push(listener);
+      return () => {
+        listeners => listeners.filter(l => l !== listener);
+      };
+    };
+
+    dispatch({});
+
+    return { getState, dispatch, subscribe };
+}
+
+// SO from HERE, you could pass actions as their own prop the component as an anonymous function like so: 
+
+const render = () => {
+  ReactDOM.render(
+    <Counter
+      value ={store.getState()} 
+      onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
+      onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
+    />,
+    document.getElementById('root');
+  );
+};
+
+
+// Here is the Counter component that renders the html elements that call the anonymous dispatch functions (note that this is in the same document, otherwise would likely need to be this.props.onIncrement, ect):
+
+const Counter = ({
+  value,
+  onIncrement,
+  onDecrement
+}) => (
+  <div> 
+    <h1>{value}</h1>
+    <button onClick={onIncrement}>+</button>
+    <button onClick={onDecrement}>-</button>
+  </div>
+);
+
+// The reducer then considers the action passed via dispatch, considers current state, and returns the updated state, and because we have subscribed to the store with the 'render' callback functino, the render function will be called anytime there is an action dispatched to the store. 
+
+// Example of a reducer that adds a todo item to state, and returns the original state if the action type is unspecified. The 'TOGGLE_TODO' action type takes our current state and maps each todo in state, returning a NEW array, and for each todo that does not equal the action.id passed to it, it simply returns that todo, OTHERWISE, it returns the same todo (spread operator), but with a completed attribute that is equal to the OPPOSITE of what the old state is. This produces a toggle effect. 
+
+const todos = (state = [], action) => {
+  swtich (action.type){
+    case 'ADD_TODOD':
+      return [
+        ...state,
+        { 
+          id: action.id,
+          text: action.text,
+          completed: false
+        }
+    ];
+    case 'TOGGLE_TODO':
+      return state.map(todo => {
+        if (todo.id !== action.id){
+          return todo;
+        }
+
+        return {
+          ...todo,
+          completed: !todo.completed
+        }
+      });
+    default:
+      return state;
+  }
+};
+
+// The above function is hard to understand BECAUSE it is mixing two concerns: how the todos ARRAY is updated and how the todo ITEM is updated, which you want to avoid in redux. You can have seperation of concerns by creating two different reducers, one to handle the array of todos in state, and one to handle individual todo items within that array in state. You should extract functions so that each function addresses a single concern. 
+
+const todo = (state, action) => {
+  switch(action.type){
+    case 'ADD_TODO':
+      return {
+        id: action.id,
+        text: action.text,
+        completed: false
+      };
+      case 'TOGGLE_TODO':
+        if (state.id !== action.id){
+          return todo;
+        }
+
+        return {
+          ... state,
+          completed: !state.completed
+        };
+      default:
+        return state;
+  }
+}
+
+const todos = (state [], action) => {
+  swtich(action.type){
+    case 'ADD_TODO':
+      return [
+        ...state,
+        todo(undefined, action)
+      ];
+    case 'TOGGLE_TODO':
+      return state.map(t => todo(t, action));
+    default:
+      return state;
+  }
+}
+
+
+// Reducer Composition - different reducers specify how different parts of the state tree are updated in response to actions. Reducers are also normal js functions, so they can also call other reducers, like in the above example. 
+

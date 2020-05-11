@@ -499,6 +499,7 @@ export default Tabs;
 
 // Enzyme - assists with testing snapshots for buttons. With this installed, install using:
 npm install enzyme enzyme-adapter-react-16 --save-devicePixelRatio
+
 // This program will automatcially search for this file in a location, you must create the setupTests.js file: ./src/setupTests.js
 // Create the file and then import using this: 
 

@@ -48,8 +48,8 @@ To create a database and assign an owner:
 To remove a database:
     DROP DATABASE <databaseName>
 
-To remove database from terminal command:
-    dropdb <databaseName>
+To drop a database from the terminal:
+  dropdb 'database_name'
 
 To create a table, must consider data-type of each column:
     CREATE TABLE <tableName> (
@@ -65,6 +65,12 @@ To create a table, must consider data-type of each column:
     ALTER TABLE articles ADD COLUMN title TEXT UNIQUE NOT NULL;
 
 * To ensure a column is required, use NOT NULL as above
+
+To connect to a certain database:
+  \c DATABASE_NAME
+
+To see all tables in the database you're connected to:
+  \dt 
 
 To view the details of a table:
     \d+ <tableName>
