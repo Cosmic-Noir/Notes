@@ -1,0 +1,19 @@
+Package upgrades:
+1. run `npm audit` - Pulls up any vulnerability or secrutiy concerns.Some are easy, some fix things.
+2. you can run 'npm audit fix' - which may fix things or break them.
+  a. If this breaks things, you can undo you changes by dropping them from the git diff.
+  b. Investigate changes, can see the updates in the package.json file
+  c. You can then go to 'npm' website, search for the packages that were updated, sometiems you need to go to github to compare changes. You want to look at the changelog, which may be a file or a wiki. Sometimes change will be nothing. Breaking changes usually only occur if the main version number of the package changes.
+  d. You can also run npm audit fix __(package)__ if you run into issues
+3. Then run the tests: 'npm run test'
+  a. If all tests pass - yay
+4. Re-run 'npm audit' - sometimes things won't have a fix. Sometimes this is due to the fact that there is not a package that fixes the vulnerabiliteis.
+5. Commit your changes if tests pass.
+6. Then run 'npm outdated'.
+  a. Compare the current, wanted, and lastest. Sometimes latest is a bigger change.
+7. Choose a package, then run 'npm update __(package)___'. Updates to the wanted value.
+  a. If you see incompatabilities (ex: upgrading webpack gives incompatability warning), you can drop the changes.
+  b. If warnings are general (no incompatabilities) and all tests pass, then you can ignore. Ex: Capacitor giving a warning about installing peer dependencies. Ensure you manually test when these warning appear.
+8. For some packages, like css packages, there may not be a test written for it and requires manual testing to see that styling was not impacted.
+
+8. When doing the merge to dev, do a squash-merge so that all commits are merged into one commit.

@@ -1,0 +1,34 @@
+Source: https://www.youtube.com/playlist?list=PLM75ZaNQS_FaEPpqVjfQdnFaSR1EWCeNZ
+
+<Entry />  - like an input element
+<Entry x:Name="EntryName" /> - using 'code behind'?
+
+Book stuff
+
+- You can bind UI elements to your database using Xamarin.Forms data binding.
+
+- MVVM - Model-View-ViewModel architecture -
+  - Model = the data
+  - View = UI what the user sees
+  - View Model = Brains - Talks to web services, application logic, makes things work. Usually have one view model per page, generally.
+    - Properties - bound to UI controlls/displays in the view. Ex: Entry that you type into, it is BOUND to the VIEW MODEL, which is automatically updated, just as if the VIEW MODEL is updated, the property is also updated.
+    - Commands - respond to user actions. Ex SaveCommand, EraseCommand
+
+Xamaran - Microsofts mobile technology for creating iOS, Android, and UWP apps.
+
+Xamaran Forms - an abstraction between all 3 platforms, windows, iOS, and UWP. Only have to write the UI once.
+
+Xamarin Solution architecture - When creating new Xamarin Forms project -
+  - When created, you get 3 projects: *.Android, *.iOS, and App1 - which is the shared applicationand UI logic. Should work everywhere. Our shared logic is the 'My-Climate-App' file, I think.
+
+XAML - Extensible applicaiton markup language
+  - Great for MVVM - gives you the ability to declaritively define the UI
+  - Visual representaiton of UI
+  - Toolable - Let's you see your UI as you build it without rebuilding.
+
+
+VS Notes:
+- Cannot add images to drawable when running emulator
+
+Cool Learnings:
+  - Simulator auto updates when you save, so you can see your UI, pretty neat!

@@ -1,0 +1,18 @@
+09/11/20
+
+Downside to native development - Have to build for android and iOS. Twice the work and cost. 
+
+PWA - Progressive web apps. Downside is you're not in the appstore, limited access to platform capabilities, but this is changing. 
+
+Capacitor/Cordova - Use web tech, single codebase, access to platform. Non-native UI/performance. 
+
+Cordova is "Phone Gap" - Cordova is the open source project. 
+  - Configure with config.xml - Where you have Android and iOS specifications. 
+  - Generates an iOS/Android project every time you build. Run the command, uses the config file to create the project. 
+  - Lots of community support.
+  - Does use some old version of Apple APIs - legacy issues. Such as camera API. 
+
+
+Capacitor 
+  - Developed by Ionic. Decided that it was really hard to push Cordova where it needed to be. They decided to do things differently and better.
+  - Configure with capacitor.config.json file. 

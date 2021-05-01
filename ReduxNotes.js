@@ -262,7 +262,7 @@ const counter = (state = 0, action) => {
 
 // Note that reducers should have a default return that returns the original state in case the action type passed is undefined. If the reducer receiveces undefined as state, it should always return the original state. 
 
-// Sotre holds current applications state, lets you dispatch actions, and you must specify reducers to especify how sxtate is updated by actions. The store has 3 important mentods:
+// Store holds current applications state, lets you dispatch actions, and you must specify reducers to specify how state is updated by actions. The store has 3 important methods:
   // getState() - returns current state of Redux store
   // dispatch() - lets you dispatch actions to modify your state - most commonly used. 
   // subscribe() - lets ou register a callback that will be called anytime a dispatch is called. So you caould call your render function, so that ANYTIME a dispatch (or change to the store) is made, the app will re-render:
@@ -275,7 +275,7 @@ const store = createStore(counter);
 const render = () => {
   ReactDOM.render(
     <Counter value ={store.getState()} />,
-    document.getElementById('root');
+    document.getElementById('root')
   )
 };
   
@@ -402,6 +402,73 @@ const todos = (state [], action) => {
   }
 }
 
+// Reducer Composition - different reducers specify how different parts of the state tree are updated in response to actions. Reducers are also normal js functions, so they can also call other reducers, like in the above example. It is often the case that we want to have a top-level reducer that returns all of state, after being returned from all of the reducers. 
 
-// Reducer Composition - different reducers specify how different parts of the state tree are updated in response to actions. Reducers are also normal js functions, so they can also call other reducers, like in the above example. 
+// combineReducers - taken from Redux, allows us to create the top-levle reducer: THe keys correspond to the fields of the state object the reducer will manage. The value of the object are the reducer it should call to update the corresponding state fields. So the below reducer, the 'todos' and 'visibilityFilter' parts of state are managed by the todos and visibilityFilter reducers. Typical to name the keys after the values (reducers.)
 
+const { combineReducers } = Redux;
+const todoApp = conbineReducers({
+  todos: todos,
+  visibilityFilter: visibilityFilter
+});
+
+// ES6 syntxx since key/value are the same:
+
+const todoApp = combineReducers({
+  todos,
+  visibilityFilter
+});
+
+// Combine Reduce function from scratch: - Taking all the keys of the reducers, 
+
+const combineReducers = (reducers) => {
+  return (state = {}, action) => {
+    return Object.keys(reducers).reduce(
+      (nextState, key) => {
+        nextState[key] = reducers[key](
+          state[key], 
+          action
+        );
+        return nextState;
+      },
+      {}
+    );
+  }
+}
+
+// Presentational component - Components concerned only with displaying/renering, not behavior. Essentially, instead of defining functions inside the component, remove from component and pass the function through props instead, which is still called in the component. 
+
+// Need to take notes on using context and <Provider > elements to pass store props.  Maybe not, looks like react-redux, already comes with an automatic provider:
+
+const { Provider } = ReactRedux;
+
+// mapStateToProps - Takes redux store state, and returns props that are needed to be passed to a presentational component
+
+const mapStateToProps = (state) => {
+  return {
+    todos: getVisibleTodos(
+      state.todos,
+      state.visibilityFilter
+    )
+  }
+}
+
+// mapDispatchToProps - Takes the stores dispatch function as the first argument, then 
+
+// specifies the behavior, which callback prop dispatches which action. 
+
+const mapDispatchToProps = (dispatch) => {    
+  return {
+    onTodoclick: id => 
+    dispatch({
+      type: 'TOGGLE_TODO',
+      id
+    })
+  };
+};
+
+// We can then use connect
+
+cost { connect } = ReactRedux;
+
+m 

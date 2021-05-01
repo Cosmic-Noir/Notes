@@ -1042,3 +1042,7 @@ Circle::PI
 # BIg numbers - apparently you can use underscores in numbers and ruby will ignore them, making things more readable. Ex:
 
 1_000_000
+
+
+# Ruby Metaprogramming Notes:
+

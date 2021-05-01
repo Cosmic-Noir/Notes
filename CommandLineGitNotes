@@ -1,21 +1,21 @@
 Command Line & Git Notes
 
--Command Line - text-based enviornment where you can manipulate files and run different commands. 
+-Command Line - text-based enviornment where you can manipulate files and run different commands.
 
--Version Control System - used to keep track of changes in files within a project. 
-Allows you to take snapshots of a project at different points in time. You can even 
-create different versions of a project and move between them or combine them. 
+-Version Control System - used to keep track of changes in files within a project.
+Allows you to take snapshots of a project at different points in time. You can even
+create different versions of a project and move between them or combine them.
 
--GitHubt - a service to save and share Git repositories where others can pull down code for 
-a project from a central location, make changes locally, and push changes back to GitHub. 
-You can also manage "pull requests" whic are requests to merge a set of changes into an 
-existing code base. 
+-GitHubt - a service to save and share Git repositories where others can pull down code for
+a project from a central location, make changes locally, and push changes back to GitHub.
+You can also manage "pull requests" whic are requests to merge a set of changes into an
+existing code base.
 
--Directories - folders. 
+-Directories - folders.
 
 -Flags - extra commands to attach to your basic commands. Note if the flag is only
 one letter long, you precede with one dash, "-a", but if the flag is a multi-letter
-flag, it must be preceeded by two dashes, "--no --ff". 
+flag, it must be preceeded by two dashes, "--no --ff".
 
 -cd: change directory, used to move from one directory (a.k.a., folder) to another
 -pwd: print working directory, used to print the name of the folder you're currently in
@@ -25,80 +25,80 @@ flag, it must be preceeded by two dashes, "--no --ff".
 -mkdir: make directory, used to create a new directory
     -"-p" - tells mkdir that it should create any intermediate directories along with target
         "mkdir -p test/cats/dogs/bears  - This will create any directories
-        that do not already exist. 
+        that do not already exist.
 -touch: used to create a new (empty) file with a given name
 -rm: remove, used to remove a file (or folder)
-    -"-i" - gives you an interactive interface to review exactly what 
-    you're about to delete. *Should always use* 
+    -"-i" - gives you an interactive interface to review exactly what
+    you're about to delete. *Should always use*
 -rmdir: remove directory, used to remove a directory - But can only
-delete EMPTY directories. 
+delete EMPTY directories.
     -"-r" - "recursive" will remove subdirectories with target.
     -"-f" - automatically remove files in target and subfolders.
--mv: move, used to move a file or directory OR change name of a file    
+-mv: move, used to move a file or directory OR change name of a file
     - Ex changing names: mv foo.txt bar.txt - foo.txt is now bar.txt
 -cp: copy, used to copy a file or directory
     -"-r" - "recursive" necessary to copy directories. Will also
-    copy any files in directories. 
--cd ~ - Brings you to your home folder. Where ~ points to the home folder. 
+    copy any files in directories.
+-cd ~ - Brings you to your home folder. Where ~ points to the home folder.
 -man ____ - manual command
 -cat - prints the content of a file. Short for "conCATenate"
         "cat test/foo.txt"
 
 
 -Tab completion - if when typing a command, hit tab before completing,
-the command line will fill with whatever matches most. 
--Arrow nav - allows you to cycle through commands you have already passed. 
+the command line will fill with whatever matches most.
+-Arrow nav - allows you to cycle through commands you have already passed.
 
 - Hidden files/folders - you simply create them with . at the beginning
-of the file/folder name to make them hidden. 
+of the file/folder name to make them hidden.
 -Copy - Ctrl+Shift+C
 -Paste - Ctrl+Shift+V
 
 
-Git - Taking snapshots of your code. Allows you to make deep or shallow changes to your code with less fear that you'll "destroy everything". Git allows you to return to an earlier snap shot of your project if something doesn't work in your latest version. OR, you can even go back to an earlier snapshot of just a single file from an earlier snapshot. 
+Git - Taking snapshots of your code. Allows you to make deep or shallow changes to your code with less fear that you'll "destroy everything". Git allows you to return to an earlier snap shot of your project if something doesn't work in your latest version. OR, you can even go back to an earlier snapshot of just a single file from an earlier snapshot.
     -Version Control - process of managing changes to code.
     -Using Git:
-        1. Initialize your project as a new "repository".  Start tracking changes. 
-        2. Can add additional commits with notes on what was changed. 
-    -Branches - Allows different, diverging versions of a code repository. You can create and work on the new "branch" even as the master branch is changing alongside it. Once you have completed changes in the new bracnh, you can "merge" with the Master branch. 
-    -Master Branch - default branch. 
-    -Merge - Merges all changes made on the alternate bracnh with the changes made in the master branch. 
-    -Conflicts - When working with other developers, or just when there is a discrpency - let's say that a feature was changed on both the master branch and the alternate branch, Git will notify you that there is a conflict as that feature was edited in both branches. You must choose which change/features to keep.  *This is an essential feature when working with others*. 
+        1. Initialize your project as a new "repository".  Start tracking changes.
+        2. Can add additional commits with notes on what was changed.
+    -Branches - Allows different, diverging versions of a code repository. You can create and work on the new "branch" even as the master branch is changing alongside it. Once you have completed changes in the new bracnh, you can "merge" with the Master branch.
+    -Master Branch - default branch.
+    -Merge - Merges all changes made on the alternate bracnh with the changes made in the master branch.
+    -Conflicts - When working with other developers, or just when there is a discrpency - let's say that a feature was changed on both the master branch and the alternate branch, Git will notify you that there is a conflict as that feature was edited in both branches. You must choose which change/features to keep.  *This is an essential feature when working with others*.
 
 Git commands
     -git init - used to initialize a new Git repository
-    -git status - used to find out the current state of the repository (aka, repo, for short). Will tell you what branch you're working on. 
+    -git status - used to find out the current state of the repository (aka, repo, for short). Will tell you what branch you're working on.
     -git add - used to stage new or changed files. We'll discuss the idea of staging changes in a moment.
     -git commit - used to take a snapshot of the repo at a point in time.
-    -git diff -- used to see what has changed in a repo since the last commit. *NOTE* This will only show you the difference between your last commit and UNSTAGED files. Once they are staged, they are no longer included in the diff status. You can either specify a file(or filepath), or , if none is specified, will show changes made to all files. 
-        -git diff --stat - will show the files that were changed, how many deletions and insertions made to each file. 
+    -git diff -- used to see what has changed in a repo since the last commit. *NOTE* This will only show you the difference between your last commit and UNSTAGED files. Once they are staged, they are no longer included in the diff status. You can either specify a file(or filepath), or , if none is specified, will show changes made to all files.
+        -git diff --stat - will show the files that were changed, how many deletions and insertions made to each file.
     -git reset -- used to reset your repository to a prior state. Let's say you add a feature to a few commits, but later realize that feature is a bad idea. After reviewing your log and finding the commit before you implemented this feature, you can "git reset SHA" and you will revert back, and all subsequent commits AFTER that commit will be deleted. *NOTE* that even though your commits were changed/erased, the files you have edited are now just "unstaged" changes and are still present.
-        -git reset --hard - This flag WILL reset the content and changes of the files to their previous commit contents, which a normal reset will not do. 
+        -git reset --hard - This flag WILL reset the content and changes of the files to their previous commit contents, which a normal reset will not do.
     -git checkout -- used to look at a prior state of the repository or move between different branches. You supply the git SHA, which you can find in "git log" after commit. alternative to using the SHA to checkout a commite, you can reference HEAD variable, ex:
-        git checkout HEAD~2   => checkouts commit two commits earlier than wherever the HEAD is currently pointing to. 
+        git checkout HEAD~2   => checkouts commit two commits earlier than wherever the HEAD is currently pointing to.
 Git key terms:
-    -Initialize - Initializes a repository in git of the selected directory. Is not a "snapshot" of any files yet. 
+    -Initialize - Initializes a repository in git of the selected directory. Is not a "snapshot" of any files yet.
     -Git Repository -
     -Commit -
-        -"-u" flag. causes Git to stage any files that it's already tracking but that have unstaged changes. 
-        Ex: git add -u   => this will stage all files edited that have already been commited, so you don't have to select each individual file to add to the stage. 
-    -Stage - Files are "staged" when they have changes that have not yet been commited, but are prepped to be added. 
-    -Snapshot - Taken during a commit, a "snapshot" of the file when commited. 
-    -HEAD - points to a commit, defaultly, the most recent commit. This changes when you checkout another commit. 
-Tracking vs Staging vs Committing - when Git is tracking a file, git knows about and is watchign the file. If a tracked file is included in a commmit, git will be able to state how the file changed since the last commit. 
-    Files are "tracked" by git, while changes are "staged". When staging a file, you tell git to to note the changes at that exact moment for the file. You can stage multiple files or multiple changes to a file before committing. The actual "snapshot" is not taken until the commit. 
-        You "commit" a set of "staged" changes. 
-    
+        -"-u" flag. causes Git to stage any files that it's already tracking but that have unstaged changes.
+        Ex: git add -u   => this will stage all files edited that have already been commited, so you don't have to select each individual file to add to the stage.
+    -Stage - Files are "staged" when they have changes that have not yet been commited, but are prepped to be added.
+    -Snapshot - Taken during a commit, a "snapshot" of the file when commited.
+    -HEAD - points to a commit, defaultly, the most recent commit. This changes when you checkout another commit.
+Tracking vs Staging vs Committing - when Git is tracking a file, git knows about and is watchign the file. If a tracked file is included in a commmit, git will be able to state how the file changed since the last commit.
+    Files are "tracked" by git, while changes are "staged". When staging a file, you tell git to to note the changes at that exact moment for the file. You can stage multiple files or multiple changes to a file before committing. The actual "snapshot" is not taken until the commit.
+        You "commit" a set of "staged" changes.
 
-Git Branches - A parallel version of a repository. 
+
+Git Branches - A parallel version of a repository.
     -Branches - "". You can create new branches using:
         git branch <branch-name>
-    You can view a list of the branches in the current repo, the * indicates the currently selected branch, and you use git checkout <branchName> to switch between branches:  
+    You can view a list of the branches in the current repo, the * indicates the currently selected branch, and you use git checkout <branchName> to switch between branches:
         git branch -a
     -Master Branch - Should be used only for production ready code. Branches should be used for new features.
-    -Deleted branches: 
+    -Deleted branches:
         git branch -D <branchName>
-    -To both create and switch to a new branch at the same time, -b indicates a new branch: 
+    -To both create and switch to a new branch at the same time, -b indicates a new branch:
         git checkout -b feature/singup-form
     -Merging - to merge a finished branch with the master branch, you must first move back to the master branch, then merge with the following instructions:
         git merge <branchName>
@@ -106,28 +106,32 @@ Git Branches - A parallel version of a repository.
                 git merge --no-ff <branchName>
 
 
-Git Hub - Most popular Git repositroy system. You can use this service to push your Git repositories "to the cloud". 
+Git Hub - Most popular Git repositroy system. You can use this service to push your Git repositories "to the cloud".
     -Cloning - Clone - copying existing repositories from the cloud to your local machine. To clone is easy, simply copy the link from git hub, then type:
         git clone https://github.com/Thinkful-Ed/laptop_customizer.git
-        
-    -Pushing - push local repositories up to the cloud, where other's can make pull requests. Once you have the repsoitory name/your username the code to push your local repository to the cloud is below. The first command tells Git to create a new REMOTE repo name "origin" that lives at your given link address. The second command tells Git to PUSH your local commit history for the reop up to the remote repo 'ORIGIN'. : 
+
+    -Pushing - push local repositories up to the cloud, where other's can make pull requests. Once you have the repsoitory name/your username the code to push your local repository to the cloud is below. The first command tells Git to create a new REMOTE repo name "origin" that lives at your given link address. The second command tells Git to PUSH your local commit history for the reop up to the remote repo 'ORIGIN'. :
         git remote add origin https://github.com/<yourUserName>/<repoName>.git
         git push -u origin master
-            *NOTE* Always include the -u flag on the push, as this will make it that moving forward when you push local master branch to the remove master branch, you need only run "git push" instead of "git push origin master". 
+            *NOTE* Always include the -u flag on the push, as this will make it that moving forward when you push local master branch to the remove master branch, you need only run "git push" instead of "git push origin master".
 git push -u origin master
-    -Pull request - formally request to merge on version of a repo into another. 
-    -git fetch - pulls new commits down from GitHub, but has not yet merged with local version of master. 
+    -Pull request - formally request to merge on version of a repo into another.
+    -git fetch - pulls new commits down from GitHub, but has not yet merged with local version of master.
     -git pull - allows you to fetch remote commits and merge with your local master branch in one command.
 
-Pull Requests - when a repository contributor makes a formal request to merge a set of changes from one branch to another. 
+Pull Requests - when a repository contributor makes a formal request to merge a set of changes from one branch to another.
 
 
 
 Deploying to GitHub Pages
-    -Deploy - 
+    -Deploy -
 
     For when you something blocking a port, you can use this command with the specified port to kill the process:
 
     kill $(lsof -t -i :PORTNUMBER)
 EX:
     kill $(lsof -t -i :8000)
+
+To remove all local branches that no longer exist on origin:
+
+git branch --merged | grep -v "\*" | xargs -n 1 git branch -d

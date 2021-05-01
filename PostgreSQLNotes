@@ -147,6 +147,12 @@ To sort results in descending order:
 To copy the data in a file and import to your tables:
     \copy products FROM '~/Kristen/products.csv' WITH DELIMITER ',' CSV;
 
+To update data in a table use UPDATE:
+  UPDATE table_name SET column1 = value1 WHERE condition;
+
+    ex:
+    UPDATE prescription SET prescription_status = 'pending' WHERE prescription_id = 1037;
+
 ---------------------------------------------
 
 Ex of creating a database to store blog posts, first by craeting a new user with permission to create the database:
@@ -225,4 +231,40 @@ CREATE TABLE IF NOT EXISTS amazong_products (
 
 
 When you want to add testing data to a table, it's called 'seeding'. Can make a file called : seed.some-data.sql. Then use BEGIN and COMMIT statements to enclose one "transaction". Postgres adds these before and after every command. They are like Javascript "try" and "catch" phrases. 
+
+
+Backing up / Restoring Postgres databases. 
+  Source: https://www.postgresql.org/docs/9.1/backup-dump.html
+  Three strategies:
+- SQL Dump - Generate a text file with SQL commands that when fed to the server will recreate the database in the same state. Note that you must have access to the database as a superuser to read the tables. 
+- File system level backup
+- Continuous archiving
+
+- pg_dump - PostgreSQL provides this utility program for SQL Dumps. Can use this comman syntax:
+  pg_dump dbname > outfile
+
+  - Note that you can use -h to specify the host and -p for the port. You can also use -u to set the PG user and override the default user (OS username). 
+  - Note that this only dumps one single database at a time, and does not dumb any info about roles or tablespaces (since they are culster-wide, not per database). 
+
+Restoring. In the below command, the infile is the file output by the pg_dump command. Note that the db must already exist, this command will not create the database. 
+  psql dbname < infile
+
+You can also restore the database with ON_ERROR_STOP variable to alter the behavior:
+  psql --set ON_ERROR_STOP=on dbname < infile
+
+Seems like we may want to use the --single--transaction comman, as this will specify that the whole dump shoud be a single transaction and either fully restored, or fully rolled back. 
+  psql --single-transaction dbname < infile
+
+Using the pg_dump command, you can even dump into another db by specifying the host and db name:
+  pg_dump -h host1 dbname | psql -h host2 dbname
+
+-pg_dumpall - This command is used to dump the entier contents of a database cluster, backs up each database in a given cluster, including roles and tablespace definitions. This works by emitting commands to re-create roles, tablespaces, and empty databases, then invokes the pg_dump for each database. 
+
+Large databases - sometimes OS will have a limit on the size of a file, which causes problems when creating the large pg_dumb output files. You can work around this using standard Unix tools. See resource for more details: 
+
+
+
+
+
+
 
