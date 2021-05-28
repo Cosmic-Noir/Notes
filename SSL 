@@ -1,0 +1,7 @@
+SSL - Explain That Code - 5/28/2021
+
+One way function - easy to do in one direction, difficult in another direction.
+
+"Signing" when you use your private key to encrypt, proving you created it, while anyone can use the public key to decrypt.
+
+SSL vs TLS - No difference, TLS is the new name - "Transport security layer"

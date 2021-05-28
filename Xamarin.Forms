@@ -32,3 +32,41 @@ VS Notes:
 
 Cool Learnings:
   - Simulator auto updates when you save, so you can see your UI, pretty neat!
+
+
+New notes as of 5-25-21
+
+Source: https://www.youtube.com/watch?v=4HlLjTZQzjM
+
+Process of creating a screen layout
+
+Use Grid:
+
+<ContentPage >
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height = "Auto" />
+      <RowDefinition Height = "Auto" />
+      <RowDefinition Height = "Auto" />
+      <RowDefinition Height = "*" />
+      <RowDefinition Height = "Auto" />
+    </Grid.RowDefinitions>
+
+    <Image Source="SomePic.png" Aspect="AspectFill" />
+    <BoxView BackgroundColor="Yellow" Grid.Row="0" HorizontalOptions="Center" />
+    <BoxView BackgroundColor="Red" Grid.Row="1" />
+    <BoxView BackgroundColor="Green" Grid.Row="2" />
+    <BoxView BackgroundColor="Purple" Grid.Row="3" />
+    <BoxView BackgroundColor="Blue" Grid.Row="4" />
+    <BoxView BackgroundColor="Azure" Grid.Row="5" />
+  </Grid>
+</ContentPage>
+
+
+
+Data Binding from "The Xamarin Show" on youtube: https://www.youtube.com/watch?v=pr03CYqhFr4&list=PLM75ZaNQS_FaEPpqVjfQdnFaSR1EWCeNZ&index=1
+
+- Allows you to say that anytime something is updated in the code-behind, then the UI should be updated. 
+
+
+Commands - Inverse of data binding - 
