@@ -128,7 +128,7 @@ function createGreeting(name?: string): string {
 
 const createArrowGreeting = (name?: string): string => {
   if (name) {
-      return `Hello, ${name}!`;
+    return `Hello, ${name}!`;
   }
 
   return undefined;
@@ -326,8 +326,64 @@ enum Pet {
 
 let petOnSaleTS: Pet = Pet.Chinchilla;
 
-//
+// SECION ON CUSTOM TYPING THAT I SHOULD REDO SO I HAVE NOTES TO REFERENCE
 
 
 
+// Unions - when you have a variable that needs to be more than one type, instead of saying : any - you can actually use what is called a "union" to allow more than one type, but not any. Ex:
+
+let ID: string | number;
+
+// function union type:
+
+function getMarginLeft(margin: string | number) {
+  return { 'marginLeft': margin };
+}
+
+// Type Guard - when a function has a union type of parameter, sometimes you want teh fucntion to do different things for different types - a type guard is a conditional that checks if a variable is a certain type:
+
+function getMarginLeft2(margin: string | number) {
+  // string or number here
+
+  if (typeof margin === 'string') {
+    // margin must be a string - then we can do string thingies
+    return margin.toLowerCase();
+  }
+}
+
+// The above is called "Type Narrowing" - it allows some flexibility to handle more than one type.
+
+// Unions and Arrays - When defining the union type of array, wrap the union in parens - NOTE - that if you don't use parentheses, it will interpret this as an array of EITHER strings or numbers, not either type.
+
+const dateNumber = 7;
+const dateString = '7';
+
+const timeList: (string | number)[] = [dateNumber, dateString];
+
+// Note that when you use a union, if you try to call a method on a union-typed variable, it must be a method that is avialable to BOTH types:
+
+const batteryStatus: boolean | number = false;
+
+batteryStatus.toString(); // No TypeScript error
+batteryStatus.toFixed(2); // TypeScript error
+
+// This is true of our own custom types as well, in this example, calling 'hasHoofs' doesn't work because it does not belong to both types:
+
+type Goose = {
+  isPettable: boolean;
+  hasFeathers: boolean;
+  canThwartAPicnic: boolean;
+}
+
+type Moose = {
+  isPettable: boolean;
+  hasHoofs: boolean;
+}
+
+const pettingZooAnimal: Goose | Moose = { isPettable: true };
+
+console.log(pettingZooAnimal.isPettable); // No TypeScript error
+console.log(pettingZooAnimal.hasHoofs); // TypeScript error
+
+// Unions with Literal Types -
 
